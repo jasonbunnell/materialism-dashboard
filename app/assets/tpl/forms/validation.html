@@ -1,0 +1,86 @@
+<section class="forms-validation" ng-controller="FormsController">
+  <div class="page-header">
+    <h1>
+      <i class="md md-input"></i>
+      Validation
+    </h1>
+    <p class="lead">
+      Using the angular auto validation module we can use validation in a clean way.
+    </p>
+  </div>
+
+  <div class="row  m-b-40">
+    <div class="col-md-3 col-md-push-9">
+      <h5>Validating elements</h5>
+      <p>
+        Push the submit button to check all the validations at once.
+        Resetting will handle resetting the validation messages.
+      </p>
+    </div>
+    <div class="col-md-8 col-md-pull-3">
+      <div class="well white" id="forms-validation-container">
+        <form class="form-floating" novalidate="novalidate" ng-submit="submit()">
+          <fieldset>
+            <legend>Validation</legend>
+
+            <div class="form-group">
+              <label class="control-label">Required</label>
+              <input type="text" class="form-control" ng-model="model.name" required>
+            </div>
+            <div class="form-group">
+              <label class="control-label">Email</label>
+              <input type="email" class="form-control" ng-model="model.email" required>
+            </div>
+            <div class="form-group">
+              <label class="control-label">Password</label>
+              <input type="password" class="form-control" ng-model="model.password" required>
+            </div>
+            <div class="form-group">
+              <label class="control-label">Url</label>
+              <input type="url" class="form-control" ng-model="model.url" required>
+            </div>
+            <div class="form-group">
+              <label class="control-label">Number</label>
+              <input type="text" class="form-control" ng-model="model.number" ng-pattern="/[0-9]/" required>
+              <p class="help-block hint-block">Numeric values from 0-***</p>
+            </div>
+
+            <div class="form-group">
+              <label class="control-label normal">Date</label>
+              <input type="date" class="form-control" ng-model="model.date" required>
+            </div>
+
+
+            <div class="form-group">
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" ng-model="model.winner" required>
+                  Are you a winner?
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="control-label">Select</label>
+              <select class="form-control" ng-model="model.select" required>
+                <option>Select a pirate</option>
+                <option>Monkey D. Luffy</option>
+                <option>Roronoa Zoro</option>
+                <option>Tony Tony Chopper</option>
+                <option>Nico Robin</option>
+                <option>Bon Clay</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="reset" class="btn btn-default">Reset</button>
+            </div>
+
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</section>

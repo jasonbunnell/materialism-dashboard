@@ -1,0 +1,161 @@
+* {
+  outline: none !important;
+}
+
+html, body {
+  height:100%;
+}
+
+body {
+  background-color: #F9F9F9;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: .1px;
+  text-rendering: optimizeLegibility;
+  font-size:13px;
+}
+
+
+img[src*=svg] {
+  width: 50px;
+  height: 100%;
+}
+
+p {
+  margin: 0 0 1em;
+}
+
+input,
+button {
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: .1px;
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  @include transition(all 0.2s);
+}
+
+h5 {
+  font-weight: 500;
+  line-height: 24px;
+  font-size: 15px;
+  color: #212121;
+}
+
+#loading-bar .bar {
+  @extend .theme-bg;
+}
+
+.lead {
+  font-size: 14px;
+  color: #9B9B9B;
+}
+
+main {
+  padding-left: $sidenav-width;
+
+  .main-container {
+    flex: 1;
+
+    .main-content {
+      position: relative;
+      padding-top: 64px;
+
+      > section {
+        margin: 20px;
+
+        @media (min-width: $screen-sm-min) {
+          margin: 40px;
+        }
+      }
+    }
+  }
+}
+
+.alert-container-top-right {
+  position: fixed;
+  top: 50px;
+  right: 0;
+  z-index: 9999;
+  .alert {
+    position: relative;
+    top: 0;
+  }
+}
+
+.brand-logo {
+  min-height: 64px;
+  color: #868686;
+  line-height: 64px;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 300;
+  font-size: 16px;
+}
+
+#logo {
+  display: inline-block;
+  position: relative;
+  height: 19px;
+  width: 40px;
+
+  .foot1, .foot2, .foot3, .foot4 {
+    position: absolute;
+    width: 10px;
+    height: 22px;
+  }
+
+  .foot1, .foot3 {
+    @include skew(-20deg, 0deg);
+    z-index: 1;
+    @extend .theme-bg-darken-1;
+  }
+
+  .foot3 {
+    left: 16px;
+  }
+
+  .foot2, .foot4 {
+    left: 8px;
+    @include skew(20deg, 0deg);
+    z-index: 0;
+    @extend .theme-bg;
+  }
+
+  .foot4 {
+    left: 24px;
+  }
+}
+
+.icon-circle {
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  border-width: 4px;
+  border-style: solid;
+  display: inline-flex;
+}
+
+.icon-color {
+  width: 35px;
+  height: 35px;
+  font-size: 20px;
+  line-height: 35px;
+  box-shadow: inset 0px -1px 3px rgba(0, 0, 0, 0.08);
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  border-radius: 50%;
+
+  @include transition(all 0.1s);
+  @include scale(1);
+
+  &:hover {
+    @include scale(1.05);
+    border-radius: 10px;
+  }
+}
+
+.element-block {
+  margin-bottom:60px;
+}

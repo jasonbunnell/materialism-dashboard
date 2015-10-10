@@ -1,0 +1,651 @@
+<div class="dashboard grey lighten-3" ng-controller="DashboardController">
+  <div class="row no-gutter">
+
+    <div class="col-sm-12 col-md-12 col-lg-9" style="background:#F9F9F9;">
+
+      <div class="p-20 clearfix">
+        <div class="pull-right">
+          <a href="pages/material-bird.html" target="_blank" class="btn btn-round-sm btn-link" bs-tooltip title="Play material bird"><i class="md md-games"></i></a>
+          <div class="btn btn-round-sm btn-link" bs-tooltip title="Upload media"><i class="md md-crop-original"></i></div>
+          <div class="btn btn-round-sm btn-link" bs-tooltip title="Write new document"><i class="md md-insert-drive-file"></i></div>
+          <div class="btn btn-round-sm btn-link" bs-tooltip title="Add new user"><i class="md md-person-add"></i></div>
+        </div>
+        <h4 class="grey-text">
+          <i class="md md-dashboard"></i>
+          <span class="hidden-xs">Performance summary and KPI's</span>
+        </h4>
+      </div>
+
+      <div class="p-20 no-p-t">
+
+        <div class="row gutter-14 kpi-dashboard">
+          <div class="col-md-4">
+            <div class="card small">
+              <div class="theme-lighten-1 p-10">
+                <div class="pull-right">
+                  <div>
+                    <i class="md md-trending-up text-rgb-5"></i>
+                    3%
+                  </div>
+                </div>
+
+                <h4 class="no-margin white-text w600">Sales per day</h4>
+                <div class="f11" style="opacity:0.8">
+                  <i class="md md-star-outline"></i> Latest 10 May, 10:00
+                </div>
+
+                <div class="p-10 p-t-30">
+                  <c3chart bindto-id="chart-line-1">
+                    <chart-column column-id="Sales"
+                                  column-values="{{chartData1}}"
+                                  column-type="line" />
+                    <chart-axis-y show="false" />
+                    <chart-axis-x show="false" />
+                    <chart-legend show-legend="false" />
+                    <chart-size chart-height="100px" />
+                    <chart-tooltip show-tooltip="true" />
+                    <chart-colors color-pattern="#fff" />
+                  </c3chart>
+                </div>
+              </div>
+
+              <div class="card-content p-10">
+                <div class="row">
+                  <div class="col-md-6 text-center" style="border-right: 1px #F0F0F0 solid;">
+                    <h3 class="no-margin w300">$4181,-</h3>
+                    <p class="grey-text w600">Total revenue</p>
+                  </div>
+                  <div class="col-md-6 text-center">
+                    <h3 class="no-margin w300">233</h3>
+                    <p class="grey-text w600">Today sales</p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card small">
+              <div class="theme-secondary-lighten-1 p-10">
+                <div class="pull-right">
+                  <div>
+                    <i class="md md-trending-up  text-rgb-5"></i>
+                    6%
+                  </div>
+                </div>
+
+                <h4 class="no-margin white-text w600">Customers per day</h4>
+                <div class="f11" style="opacity:0.8">
+                  <i class="md md-star-outline"></i> Latest 10 May, 10:00
+                </div>
+
+                <div class="p-10 p-t-30">
+                  <c3chart bindto-id="chart-line-2">
+                    <chart-column column-id="Customers"
+                                  column-values="{{chartData2}}"
+                                  column-type="line" />
+                    <chart-axis-y show="false" />
+                    <chart-axis-x show="false" />
+                    <chart-legend show-legend="false" />
+                    <chart-size chart-height="100px" />
+                    <chart-tooltip show-tooltip="true" />
+                    <chart-colors color-pattern="#fff" />
+                  </c3chart>
+                </div>
+              </div>
+
+              <div class="card-content p-10">
+                <div class="row">
+                  <div class="col-md-6 text-center" style="border-right: 1px #F0F0F0 solid;">
+                    <h3 class="no-margin w300">2584</h3>
+                    <p class="grey-text w600">Monthly total</p>
+                  </div>
+                  <div class="col-md-6 text-center">
+                    <h3 class="no-margin w300">89</h3>
+                    <p class="grey-text w600">Today total</p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card small">
+              <div class="green lighten-1 p-10">
+                <div class="pull-right">
+                  <div>
+                    <i class="md md-trending-up  text-rgb-5"></i>
+                    9%
+                  </div>
+                </div>
+
+                <h4 class="no-margin white-text w600">Newsletter signups</h4>
+                <div class="f11" style="opacity:0.8">
+                  <i class="md md-star-outline"></i> Latest 10 May, 10:00
+                </div>
+
+                <div class="p-10 p-t-30">
+                  <c3chart bindto-id="chart-line-3">
+                    <chart-column column-id="Signups"
+                                  column-values="{{chartData3}}"
+                                  column-type="line" />
+                    <chart-axis-y show="false" />
+                    <chart-axis-x show="false" />
+                    <chart-legend show-legend="false" />
+                    <chart-size chart-height="100px" />
+                    <chart-tooltip show-tooltip="true" />
+                    <chart-colors color-pattern="#fff" />
+                  </c3chart>
+                </div>
+              </div>
+
+              <div class="card-content p-10">
+                <div class="row">
+                  <div class="col-md-6 text-center" style="border-right: 1px #F0F0F0 solid;">
+                    <h3 class="no-margin w300">1597</h3>
+                    <p class="grey-text w600">Monthly total</p>
+                  </div>
+                  <div class="col-md-6 text-center">
+                    <h3 class="no-margin w300">34 </h3>
+                    <p class="grey-text w600">Today total</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row gutter-14">
+          <div class="col-md-5">
+
+            <div class="card">
+              <div class="card-header relative">
+                <div class="card-title">New orders</div>
+                <div class="small grey-text">The last 3 orders from the website</div>
+
+                <div class="floating-actions">
+                  <button type="button" class="btn btn-round btn-info" bs-tooltip title="View all orders"><span class="md md-chevron-right"></span></button>
+                </div>
+              </div>
+
+              <div class="list-group" ng-init="(orders=[]).length=3;">
+                <a href class="list-group-item clearfix" ng-repeat="i in orders track by $index">
+                  <div class="pull-left m-r-10">
+                    <img placeholder-img class="img-responsive" />
+                  </div>
+                  <div class="list-group-item-heading" placeholder-title></div>
+                  <span class="list-group-item-text" placeholder-p></span>
+                </a>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="col-md-4">
+
+            <div class="panel panel-default left">
+              <div class="panel-heading">
+
+                <div class="pull-right">
+                  <a href="" class="btn btn-round-sm btn-link"
+                     bs-dropdown="dropdown"
+                     data-template="assets/tpl/partials/dropdown-list-example.html"
+                     data-animation="mat-grow-top-right">
+                    <i class="md md-more-vert"></i>
+                  </a>
+                </div>
+
+                <h2 class="panel-title grey-text">Server load</h2>
+                <h1 class="m-t-10 m-b-5 f30" ng-bind="serverLoad">82%</h1>
+                <div class="row">
+                  <div class="col-xs-6">
+                    <div class="progress m-b-5">
+                      <div class="progress-bar" style="width: {{serverLoad}}%;"></div>
+                    </div>
+                  </div>
+                </div>
+                <p class="small grey-text no-margin">4 of 8 cores used</p>
+              </div>
+              <div id="server-load-chart"></div>
+            </div>
+
+          </div>
+          <div class="col-md-3">
+
+            <div class="card">
+              <div class="card-image">
+                <img src="assets/img/photos/4.jpg" class="img-responsive" style="max-height:193px;" />
+                <div class="card-title">Super card</div>
+              </div>
+              <div class="card-content">
+                <div class="card-profile pull-right"><img src="assets/img/icons/ballicons/bill.svg" alt="" style="width:75px;"></div>
+                <p>I am a very simple card. I am good at containing small info.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="row gutter-14">
+          <div class="col-md-4">
+
+
+
+              <div class="panel panel-default weather">
+                <div class="panel-body">
+                  <div class="clearfix">
+                    <div class="pull-left degrees">77<i class="wi wi-fahrenheit"></i></div>
+                    <div class="pull-right location">Philadelphia</div>
+                  </div>
+                  <div class="weather-icon">
+                    <i class="wi wi-horizon-alt"></i>
+                  </div>
+                  <div>
+                    Sunny
+                  </div>
+                </div>
+              </div>
+
+
+            <div class="card">
+              <div class="card-header relative">
+                <div class="card-title">Blog comments</div>
+                <div class="small grey-text">The last comments from the blog</div>
+
+                <div class="floating-actions">
+                  <button type="button" class="btn btn-round btn-info" bs-tooltip title="Moderate comments"><span class="md md-chevron-right"></span></button>
+                </div>
+              </div>
+
+              <div class="list-group" ng-init="(comments=[]).length=2;">
+                <a href class="list-group-item clearfix" ng-repeat="i in comments track by $index">
+                  <div class="pull-left m-r-10">
+                    <i class="icon-circle {{theme_colors[$index]}}-border v-super"></i>
+                  </div>
+                  <div class="list-group-item-heading" placeholder-name></div>
+                  <span class="list-group-item-text" placeholder-p></span>
+                </a>
+              </div>
+
+            </div>
+
+          </div>
+          <div class="col-md-8">
+
+            <div class="card">
+              <div class="card-header">
+                <div class="actions">
+                  <a href="" class="btn btn-link btn-icon"
+                     bs-dropdown="dropdown"
+                     data-template="assets/tpl/partials/dropdown-list-example.html"
+                     data-animation="mat-grow-top-right"
+                    ><i class="md md-more-vert"></i></a>
+                </div>
+                <div class="card-title">The last 5 new customers</div>
+                <div class="small grey-text">Overview of the last customers and customers per day</div>
+              </div>
+
+              <div class="table-responsive">
+                <table class="table table-full table-full-small table-dashboard-widget-1">
+                  <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Last</th>
+                    <th>Summary</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr>
+                    <td>Abbey</td>
+                    <td>Don Johnson</td>
+                    <td>Fuisset delicatissimi duo, qui ut animal noluisse erroribus.</td>
+                  </tr>
+                  <tr>
+                    <td>Alex</td>
+                    <td>Nel Nelson</td>
+                    <td>Ea eum veniam audire. Dicant vituperata consequuntur.</td>
+                  </tr>
+                  <tr>
+                    <td>Mary</td>
+                    <td>Peet Peterson</td>
+                    <td>Per at postea mediocritatem, vim numquam aliquid eu, in nam sale gubergren.</td>
+                  </tr>
+                  <tr>
+                    <td>Alex</td>
+                    <td>Nel Nelson</td>
+                    <td>Ea eum veniam audire. Dicant vituperata consequuntur.</td>
+                  </tr>
+                  <tr>
+                    <td>Mary</td>
+                    <td>Peet Peterson</td>
+                    <td>Per at postea mediocritatem, vim numquam aliquid eu, in nam sale gubergren.</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="m-t-20">
+                <c3chart bindto-id="chart-area-1" padding-bottom="-8px" padding-left="-20px" padding-right="-20px">
+                  <chart-column column-id="Customers"
+                                column-values="{{chartData4}}"
+                                column-type="area" />
+                  <chart-axis-y show="false" />
+                  <chart-axis-x show="false" />
+                  <chart-legend show-legend="false" />
+                  <chart-size chart-height="100px" />
+                  <chart-tooltip show-tooltip="true" />
+                  <chart-colors color-pattern="#EC407A" />
+                </c3chart>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="row gutter-14">
+
+
+
+          <div class="col-lg-6 col-md-6">
+            <todo-widget />
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="card bg-facebook white-text">
+              <div class="card-content">
+                <div class="" style="min-height: 140px;">
+                  <h2 class="f18 lh-13 w300 no-margin white-text">Do not dwell in the past, do not dream of the future, concentrate the mind on the present moment.</h2>
+                  <h5 class="f11 no-margin blue-text lighten-4 p-b-25">10 April, 2016 · <i class="fa fa-globe"></i></h5>
+                </div>
+                <div class="pull-right p-5">
+                  <i class="fa fa-thumbs-o-up"></i> 3123 &nbsp;&nbsp;
+                  <i class="fa fa-comment-o"></i> 241
+                </div>
+                <i class="fa fa-facebook f18"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="card bg-twitter white-text">
+              <div class="card-content">
+                <div class="" style="min-height: 140px;">
+                  <h2 class="f18 lh-13 w300 no-margin white-text">You will not be punished for your anger, you will be punished by your anger.</h2>
+                  <h5 class="f11 no-margin blue-text lighten-4">10 April, 2016 @wisdom</h5>
+                </div>
+                <div class="pull-right p-5">
+                  <i class="fa fa-star-o"></i> 3123 &nbsp;&nbsp;
+                  <i class="fa fa-retweet"></i> 241
+                </div>
+                <i class="fa fa-twitter f18"></i>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="grey-text small p-t-20" ng-cloak>Materialism by Theme-Guys - v{{APP.version}}</div>
+      </div>
+    </div>
+
+    <div class="col-lg-3 col-md-12">
+
+      <div class="p-20">
+        <div class="pull-right">
+          <ul class="list-unstyled">
+            <li class="dropdown">
+              <button type="button"
+                      class="btn btn-round-sm btn-link"
+                      bs-dropdown="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                      data-template="assets/tpl/partials/dropdown-list-example.html"
+                      data-animation="mat-grow-top-right"
+                      bs-tooltip
+                      title="More stats">
+                <i class="md md-equalizer"></i>
+              </button>
+            </li>
+        </div>
+        <h4 class="grey-text m-b-30">Action feed</h4>
+
+        <div class="card">
+          <div class="p-10 p-l-20 p-r-20 clearfix">
+            <div class="badge pull-right">10</div>
+            <div class="w600 f11 grey-text">Insights</div>
+          </div>
+          <div class="table-responsive">
+            <table class="table table-small grey-text">
+              <colgroup>
+                <col width="">
+                <col width="60" />
+                <col width="50" />
+              </colgroup>
+              <tbody>
+              <tr>
+                <td>Weekly sales</td>
+                <td>43</td>
+                <td><i class="md md-arrow-drop-up green-text"></i></td>
+              </tr>
+              <tr>
+                <td>Weekly profits</td>
+                <td>$4181,-</td>
+                <td><i class="md md-arrow-drop-up green-text"></i></td>
+              </tr>
+              <tr>
+                <td>Monthly visits</td>
+                <td>14000</td>
+                <td><i class="md md-arrow-drop-down red-text"></i></td>
+              </tr>
+              <tr>
+                <td>Bounce rate</td>
+                <td>40%</td>
+                <td><i class="md md-arrow-drop-up green-text"></i></td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="p-h-40">
+
+        <div role="tabpanel">
+          <!-- Nav tabs -->
+          <ul class="nav nav-tabs" role="tablist" ng-init="actionTab=1">
+            <li role="presentation" class="active"><a ng-click="actionTab=1" aria-controls="home" role="tab" data-toggle="tab">Log</a></li>
+            <li role="presentation" class=""><a ng-click="actionTab=2" aria-controls="home" role="tab" data-toggle="tab">Timeline</a></li>
+            <li role="presentation"><a ng-click="actionTab=3" aria-controls="home" role="tab" data-toggle="tab">Messages</a></li>
+          </ul>
+          <!-- Tab panes -->
+          <div class="tab-content m-t-10">
+            <div role="tabpanel" class="tab-pane" ng-class="{active: actionTab==1}">
+
+              <ul class="timeline">
+                <li>
+                  <div class="timeline-badge">
+                    <i class="icon-circle theme-border"></i>
+                  </div>
+                  <div class="timeline-panel">
+                    <div class="timeline-heading">
+                      <h4 class="timeline-title">E-mail confirmation</h4>
+                    </div>
+                    <div class="timeline-body">
+                      <p>A new user has registered and confirmed his account</p>
+                      <small class="text-muted"><i class="md md-timer"></i> 11 hours ago</small>
+                    </div>
+                  </div>
+                </li>
+                <li class="timeline-inverted">
+                  <div class="timeline-badge">
+                    <i class="icon-circle theme-secondary-border"></i>
+                  </div>
+                  <div class="timeline-panel">
+                    <div class="timeline-heading">
+                      <h4 class="timeline-title">User payment</h4>
+                    </div>
+                    <div class="timeline-body">
+                      <p>A new user has payed a premium package</p>
+                      <small class="text-muted"><i class="md md-timer"></i> 11 hours ago</small>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="timeline-badge">
+                    <i class="icon-circle green-border"></i>
+                  </div>
+                  <div class="timeline-panel">
+                    <div class="timeline-heading">
+                      <h4 class="timeline-title">E-mail confirmation</h4>
+                    </div>
+                    <div class="timeline-body">
+                      <p>A new user has registered and confirmed his account</p>
+                      <small class="text-muted"><i class="md md-timer"></i> 11 hours ago</small>
+                    </div>
+                  </div>
+                </li>
+                <li class="timeline-inverted">
+                  <div class="timeline-badge">
+                    <i class="icon-circle red-border accent-1"></i>
+                  </div>
+                  <div class="timeline-panel">
+                    <div class="timeline-heading">
+                      <h4 class="timeline-title">User payment</h4>
+                    </div>
+                    <div class="timeline-body">
+                      <p>A new user has payed a premium package</p>
+                      <small class="text-muted"><i class="md md-timer"></i> 11 hours ago</small>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="timeline-badge">
+                    <i class="icon-circle theme-border"></i>
+                  </div>
+                  <div class="timeline-panel">
+                    <div class="timeline-heading">
+                      <h4 class="timeline-title">E-mail confirmation</h4>
+                    </div>
+                    <div class="timeline-body">
+                      <p>A new user has registered and confirmed his account</p>
+                      <small class="text-muted"><i class="md md-timer"></i> 11 hours ago</small>
+                    </div>
+                  </div>
+                </li>
+                <li class="timeline-inverted">
+                  <div class="timeline-badge">
+                    <i class="icon-circle brown-border"></i>
+                  </div>
+                  <div class="timeline-panel">
+                    <div class="timeline-heading">
+                      <h4 class="timeline-title">User payment</h4>
+                    </div>
+                    <div class="timeline-body">
+                      <p>A new user has payed a premium package</p>
+                      <small class="text-muted"><i class="md md-timer"></i> 11 hours ago</small>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+
+            </div>
+            <div role="tabpanel" class="tab-pane" ng-class="{active: actionTab==2}">
+
+              <ul class="timeline" ng-init="(rows=[]).length=5;">
+                <li ng-repeat="i in rows track by $index">
+                  <div class="timeline-badge"><img placeholder-img class="img-responsive" /></div>
+                  <div class="timeline-panel">
+                    <div class="timeline-heading">
+                      <h4 class="timeline-title" placeholder-name></h4>
+                    </div>
+                    <div class="timeline-body">
+                      <span placeholder-p></span>
+                      <small class="text-muted"><i class="md md-timer"></i> 11 hours ago</small>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+
+            </div>
+            <div role="tabpanel" class="tab-pane" ng-class="{active: actionTab==3}">
+
+              <ul class="timeline" ng-init="(rows=[]).length=5;">
+                <li ng-repeat="i in rows track by $index">
+                  <div class="timeline-badge" placeholder-icon></div>
+                  <div class="timeline-panel">
+                    <div class="timeline-heading">
+                      <h4 class="timeline-title" placeholder-name></h4>
+                    </div>
+                    <div class="timeline-body">
+                      <span spanlaceholder-p></span>
+                      <small class="text-muted"><i class="md md-timer"></i> 11 hours ago</small>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-20">
+        <div class="row">
+          <div class="col-xs-4">
+            <c3chart bindto-id="chart-gauge-1">
+              <chart-column column-id="Gauge"
+                            column-type="gauge"
+                            column-values="80" />
+              <chart-gauge width="3" />
+              <chart-tooltip show-tooltip="false" />
+              <chart-legend show="false" />
+              <chart-size chart-height="60px" />
+              <chart-colors color-pattern="{{color_pattern}}" />
+            </c3chart>
+            <div class="text-center small">New visitors</div>
+          </div>
+          <div class="col-xs-4">
+            <c3chart bindto-id="chart-gauge-2">
+              <chart-column column-id="Gauge"
+                            column-type="gauge"
+                            column-values="30" />
+              <chart-gauge width="3" />
+              <chart-tooltip show-tooltip="false" />
+              <chart-size chart-height="60px" />
+              <chart-colors color-pattern="{{color_pattern}}" />
+            </c3chart>
+            <div class="text-center small">Conversions</div>
+          </div>
+          <div class="col-xs-4">
+            <c3chart bindto-id="chart-gauge-3">
+              <chart-column column-id="Gauge"
+                            column-type="gauge"
+                            column-values="40" />
+              <chart-gauge width="3" />
+              <chart-tooltip show-tooltip="false" />
+              <chart-size chart-height="60px" />
+              <chart-colors color-pattern="{{color_pattern}}" />
+            </c3chart>
+            <div class="text-center small">Bounce rate</div>
+          </div>
+        </div>
+      </div>
+
+      <c3chart bindto-id="chart-pagesviews" padding-bottom="-8px">
+        <chart-column column-id="Pageviews"
+                      column-values="3,4,5,10,20,14,18,12,10,20,10,14,15,10,20,14,18,12,10,20"
+                      column-type="area" />
+        <chart-axis-y show="false" />
+        <chart-axis-x show="false" />
+        <chart-legend show-legend="false" />
+        <chart-size chart-height="100px" />
+        <chart-tooltip show-tooltip="true" />
+        <chart-colors color-pattern="#fff" />
+      </c3chart>
+    </div>
+
+  </div>
+
+
+</div>

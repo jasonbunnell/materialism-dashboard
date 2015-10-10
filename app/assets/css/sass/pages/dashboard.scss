@@ -1,0 +1,77 @@
+.dashboard {
+
+  .table-dashboard-widget-1 td:first-child {
+    @extend .theme-text;
+  }
+
+  .table-dashboard-widget-1 td:last-child {
+    color: color('grey');
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
+  }
+
+  .c3-line-Server-load {
+    opacity: 0 !important;
+  }
+
+  .card, .panel {
+    margin-bottom: 14px;
+  }
+
+  #chart-line-1,
+  #chart-line-2,
+  #chart-line-3 {
+    .c3-tooltip {
+      th,
+      td > span {
+        display:none;
+      }
+    }
+  }
+
+  #chart-gauge-1,
+  #chart-gauge-2,
+  #chart-gauge-3 {
+    .c3-arc {
+      stroke-width: 0;
+    }
+    .c3-chart-arcs text {
+      fill: #EEE;
+    }
+    .c3-gauge-value {
+      font-size: 11px !important;
+      font-weight: 600;
+      fill: #A8A8A8 !important;
+    }
+  }
+
+  #chart-pagesviews {
+    .c3-tooltip {
+      th,
+      td > span {
+        display:none;
+      }
+    }
+  }
+
+  #chart-area-1 {
+    .c3-circles {
+      display:none;
+    }
+    .c3-line {
+      display:none;
+    }
+    .c3-area {
+      opacity: 1 !important;
+      fill: #C1E4FF !important;
+    }
+    .c3-tooltip {
+      th,
+      td > span {
+        display:none;
+      }
+    }
+  }
+}

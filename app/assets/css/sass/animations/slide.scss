@@ -1,0 +1,19 @@
+.mat-slide-right {
+  overflow: hidden;
+
+  @include transition(0.3s linear all);
+  @include transform-origin(center right);
+  @include animation-timing-function(ease-in-out);
+
+  &.ng-enter,
+  &.ng-leave.ng-leave-active {
+    opacity: 0;
+    max-width: 0;
+  }
+
+  &.ng-leave,
+  &.ng-enter.ng-enter-active {
+    opacity: 1;
+    max-width: 100%;
+  }
+}

@@ -1,0 +1,11 @@
+.alert {
+
+  &.alert-theme {
+    max-width: 440px;
+    @extend .z-depth-2;
+
+    @extend .theme-secondary;
+    left: auto;
+  }
+
+}

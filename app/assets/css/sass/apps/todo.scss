@@ -1,0 +1,37 @@
+.todo-app {
+  form .form-group {
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+  .filters {
+    margin-bottom: 20px;
+    .filter,
+    .filter:focus {
+      background-color: transparent;
+      border-radius: 0;
+      @include box-shadow(none);
+      @include transition(all 0.2s);
+      @extend .theme-text;
+
+      &:hover {
+        background-color: transparent;
+        @extend .theme-text;
+        @extend .theme-box-inset;
+      }
+    }
+    .filter.active {
+      border: none;
+      @extend .theme-text;
+      @extend .theme-box-inset;
+
+      &:focus {
+        @extend .theme-box-inset;
+      }
+      &:hover {
+        border: none;
+        @extend .theme-text;
+      }
+    }
+  }
+  @extend .todo-widget;
+}

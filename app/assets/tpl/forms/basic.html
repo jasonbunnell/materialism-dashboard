@@ -1,0 +1,392 @@
+<section class="forms-basic" ng-controller="FormsController">
+  <div class="page-header">
+    <h1>
+      <i class="md md-input"></i>
+      Basic Forms
+    </h1>
+    <p class="lead">
+      An overview of basic form styles in containers and elements.
+    </p>
+  </div>
+
+  <div class="row  m-b-40">
+    <div class="col-md-3 col-md-push-9">
+      <h5>Floating material design form</h5>
+      <p>Form styling is possible with various bootstrap containers like wells and panels. In this example it's a white well.</p>
+    </div>
+    <div class="col-md-8 col-md-pull-3">
+      <div class="well white">
+        <form class="form-floating">
+          <fieldset>
+            <legend>Floating label form</legend>
+            <span class="help-block">Please fill out the following form below.</span>
+            <div class="form-group">
+              <label for="inputEmail" class="control-label">Email</label>
+              <input type="text" class="form-control">
+            </div>
+
+            <div class="form-group">
+              <label for="inputPassword" class="control-label">Password</label>
+              <input type="password" class="form-control" id="inputPassword">
+            </div>
+
+            <div class="form-group">
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox"> Are you a winner?
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="textArea" class="control-label">Textarea</label>
+              <textarea class="form-control vertical" rows="3" id="textArea"></textarea>
+              <span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>
+            </div>
+
+            <div class="form-group">
+              <label class="control-label normal">Radio buttons</label>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
+                  Option one is this
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                  Option two can be something else
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="control-label normal">Switches</label>
+              <div class="switch">
+                <label>
+                  Off
+                  <input type="checkbox">
+                  <span class="lever"></span>
+                  On
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <ui-select ng-model="person.selected" theme="select2" title="Choose a person" search-enabled="false">
+                <ui-select-match placeholder="Select or search a person in the list...">{{$select.selected.name}}</ui-select-match>
+                <ui-select-choices repeat="item in people | filter: $select.search">
+                  <div ng-bind-html="item.name | highlight: $select.search"></div>
+                  <small ng-bind-html="item.email | highlight: $select.search"></small>
+                </ui-select-choices>
+              </ui-select>
+            </div>
+
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="reset" class="btn btn-default">Cancel</button>
+            </div>
+
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="row m-b-40">
+
+    <div class="col-md-3 col-md-push-9">
+      <h5>Floating material design form prefilled</h5>
+      <p>Form styling is possible with various bootstrap containers like wells and panels. In this example it's a default well</p>
+    </div>
+    <div class="col-md-8 col-md-pull-3">
+      <div class="well">
+        <form class="form-horizontal placeholder-form">
+          <fieldset>
+            <legend>Horizontal form</legend>
+            <span class="help-block m-b-20">Please fill out the following form below.</span>
+
+            <div class="form-group">
+              <label for="inputEmail" class="col-lg-2 control-label">Email</label>
+              <div class="col-lg-10">
+                <input type="text" class="form-control" id="inputEmail" placeholder="Email">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="inputPassword" class="col-lg-2 control-label">Password</label>
+              <div class="col-lg-10">
+                <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="inputPassword" class="col-lg-2 control-label">Checkbox</label>
+              <div class="col-lg-10">
+
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox"> Are you a winner?
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="textArea" class="col-lg-2 control-label">Textarea</label>
+              <div class="col-lg-10">
+                <textarea class="form-control vertical" rows="3" id="textArea" placeholder="Why not?"></textarea>
+                <span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-lg-2 control-label">Radios</label>
+              <div class="col-lg-10">
+                <div class="radio">
+                  <label>
+                    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
+                    Option one is this
+                  </label>
+                </div>
+                <div class="radio">
+                  <label>
+                    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                    Option two can be something else
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-lg-2 control-label">Switches</label>
+              <div class="col-lg-10">
+                <div class="switch">
+                  <label>
+                    Off
+                    <input type="checkbox">
+                    <span class="lever"></span>
+                    On
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-lg-2 control-label">Select</label>
+              <div class="col-lg-10">
+                <ui-select ng-model="person.selected" theme="select2" title="Choose a person" search-enabled="false">
+                  <ui-select-match placeholder="Select or search a person in the list...">{{$select.selected.name}}</ui-select-match>
+                  <ui-select-choices repeat="item in people | filter: $select.search">
+                    <div ng-bind-html="item.name | highlight: $select.search"></div>
+                    <small ng-bind-html="item.email | highlight: $select.search"></small>
+                  </ui-select-choices>
+                </ui-select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="col-lg-10 col-lg-offset-2">
+                <button type="reset" class="btn btn-default">Cancel</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+            </div>
+
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="m-b-20">
+    <h5>Misc forms and form layouts</h5>
+    <p>Here are more variations and elements you can use in forms</p>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="well white">
+        <form class="form-floating">
+
+          <fieldset>
+            <legend>Form sizes and controls</legend>
+            <span class="help-block mw400">When using validation on your form you want the user to get a visual representation of what actions are needed.</span>
+            <div class="form-group">
+              <label class="control-label" for="inputSmall">Small input</label>
+              <input class="form-control input-sm" type="text" id="inputSmall">
+            </div>
+            <div class="form-group">
+              <input class="form-control" id="focusedInput" type="text">
+              <label class="control-label" for="focusedInput">Default input</label>
+            </div>
+            <div class="form-group">
+              <label class="control-label" for="inputSmall">Small large</label>
+              <input class="form-control input-lg" type="text" id="inputSmall">
+            </div>
+            <div class="form-group">
+              <label class="control-label" for="focusedInput">Focused input</label>
+              <input class="form-control" id="focusedInput" type="text" value="This is focused... *removed for demo, just add autofocus as attribute*">
+            </div>
+            <div class="form-group">
+              <label class="control-label">Disabled input</label>
+              <input class="form-control" type="text"  disabled="">
+            </div>
+
+          </fieldset>
+
+        </form>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="well white">
+        <form class="form-floating">
+          <fieldset>
+            <legend>Input colors</legend>
+            <span class="help-block mw400">When using validation on your form you want the user to get a visual representation of what actions are needed.</span>
+
+            <div class="form-group">
+              <label class="control-label" for="inputWarning">Input normal</label>
+              <input type="text" class="form-control" id="inputWarning">
+            </div>
+
+            <div class="form-group has-warning">
+              <label class="control-label" for="inputWarning">Input warning</label>
+              <input type="text" class="form-control" id="inputWarning">
+            </div>
+
+            <div class="form-group has-error">
+              <label class="control-label" for="inputError">Input error</label>
+              <input type="text" class="form-control" id="inputError">
+            </div>
+
+            <div class="form-group has-success">
+              <label class="control-label" for="inputSuccess">Input success</label>
+              <input type="text" class="form-control" id="inputSuccess">
+            </div>
+
+          </fieldset>
+        </form>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row">
+
+    <div class="col-md-6">
+      <div class="well white">
+        <form class="form-floating">
+          <fieldset>
+            <legend>Form input addons</legend>
+            <span class="help-block">Due to some layout spacing you need to add padding to an element.</span>
+            <div class="row p-b-15">
+              <div class="col-lg-6">
+                <div class="input-group">
+                  <div class="input-group-btn p-r-10">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Action <span class="caret"></span></button>
+                    <ul class="dropdown-menu" role="menu">
+                      <li><a href="">Action</a></li>
+                      <li><a href="">Another action</a></li>
+                      <li><a href="">Something else here</a></li>
+                      <li class="divider"></li>
+                      <li><a href="">Separated link</a></li>
+                    </ul>
+                  </div><!-- /btn-group -->
+                  <input type="text" class="form-control" aria-label="...">
+                </div><!-- /input-group -->
+              </div><!-- /.col-lg-6 -->
+              <div class="col-lg-6">
+                <div class="input-group">
+                  <input type="text" class="form-control" aria-label="...">
+                  <div class="input-group-btn p-l-10">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Action <span class="caret"></span></button>
+                    <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                      <li><a href="">Action</a></li>
+                      <li><a href="">Another action</a></li>
+                      <li><a href="">Something else here</a></li>
+                      <li class="divider"></li>
+                      <li><a href="">Separated link</a></li>
+                    </ul>
+                  </div><!-- /btn-group -->
+                </div><!-- /input-group -->
+              </div><!-- /.col-lg-6 -->
+            </div><!-- /.row -->
+
+            <div class="form-group">
+              <label class="control-label normal">Input addon label</label>
+              <div class="input-group">
+                <span class="input-group-addon"><i class="md md-apps"></i></span>
+                <input type="text" class="form-control">
+                  <span class="input-group-btn p-l-10">
+                    <button class="btn btn-default" type="button">Send</button>
+                  </span>
+              </div>
+            </div>
+
+
+            <div class="form-group">
+              <div class="input-group">
+                <input type="text" class="form-control" id="exampleInputAmount" placeholder="Question">
+                <div class="input-group-addon">
+                  <i class="md md-question-answer"></i>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="form-group">
+              <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
+              <div class="input-group">
+                <div class="input-group-addon">$</div>
+                <input type="text" class="form-control" id="exampleInputAmount" placeholder="Amount">
+                <div class="input-group-addon">.00</div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
+              <div class="input-group">
+                <input type="text" class="form-control" id="exampleInputAmount" placeholder="My name">
+                <div class="input-group-addon">@mydomain.com</div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">@</span>
+                <input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
+              </div>
+            </div>
+
+          </fieldset>
+        </form>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="well white">
+        <form class="form-inline">
+          <fieldset>
+            <legend>Inline form</legend>
+            <br/>
+            <div class="form-group">
+              <label class="sr-only" for="exampleInputEmail3">Email address</label>
+              <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Enter email">
+            </div>
+
+            <div class="checkbox-inline">
+              <label>
+                <input type="checkbox"> Are you a winner?
+              </label>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Sign in <i class="md md-send"></i></button>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+
+  </div>
+
+</section>

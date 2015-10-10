@@ -1,0 +1,47 @@
+<div class="todo-widget card bordered small">
+
+  <div class="card-header">
+
+    <div class="action pull-right">
+      <button type="button" class="btn btn-round btn-flat btn-default" data-title="Clear completed" bs-tooltip ng-click="todoService.clearCompleted()">
+        <i class="md md-check"></i>
+      </button>
+    </div>
+
+    <h2 class="card-title"><i class="md md-speaker-notes theme-primary"></i> Todo's</h2>
+  </div>
+
+  <div class="card-content">
+    <ul class="list-unstyled" ng-show="todos.length">
+      <li ng-repeat="todo in todos track by $id($index)">
+        <div class="checkbox">
+          <span class="pull-right">
+            <button type="button" class="btn btn-round btn-flat btn-default" ng-click="todoService.editTodo(todo)">
+              <i class="md md-edit"></i>
+            </button>
+          </span>
+          <label ng-class="{strike: todo.done}">
+            <input ng-model="todo.done" type="checkbox" ng-click="todoService.toggleDone(todo)" /> {{todo.title}}
+          </label>
+        </div>
+      </li>
+    </ul>
+
+    <div class="alert alert-info" ng-show="!todos.length">
+      <p>No more todo's, you are free!</p>
+    </div>
+  </div>
+
+  <div class="card-action clearfix">
+
+    <form class="form">
+      <div class="form-group input-group">
+        <input id="todo-title" class="form-control" type="text" ng-model="todoService.todo.title">
+        <div class="input-group-btn p-l-10">
+          <button class="btn btn-default ng-animate-disabled" ng-click="todoService.saveTodo()">{{ todoService.todo.editing ? 'Save' : 'Add' }}</button>
+        </div>
+      </div>
+    </form>
+
+  </div>
+</div>

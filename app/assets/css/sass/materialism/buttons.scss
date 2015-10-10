@@ -1,0 +1,230 @@
+
+// buttons  =================================================================
+
+.btn {
+  border: none;
+  text-transform: uppercase;
+  font-weight: normal;
+  position:relative;
+  border-radius: 3px;
+
+  //@include box-shadow(0 1px 3px 0 rgba(0, 0, 0, 0.3));
+  @include box-shadow(1px 1px 2px rgba(0,0,0,.3));
+  @include transition(all 0.4s cubic-bezier(0, 0, 0.2, 1));
+
+  &:hover,
+  &:active {
+    //@include box-shadow(0 5px 10px 0 rgba(0, 0, 0, 0.3));
+    @include box-shadow(0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15));
+  }
+
+  &-link {
+    $bg: color('grey', 'lighten-3');
+    @extend .theme-text;
+    @include box-shadow(none);
+
+    &:focus {
+      text-decoration: none;
+      @extend .theme-text-darken-1;
+    }
+
+    &:hover {
+      @include box-shadow(none);
+      @extend .theme-text-darken-1;
+      text-decoration: none;
+      background-color: $bg;
+    }
+  }
+
+}
+
+
+.btn-round-sm {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  background-image:none;
+  padding:0px;
+  text-align:center;
+  line-height:40px;
+}
+
+
+@mixin btn-round-size($size) {
+  width: $size;
+  height: $size;
+  line-height: $size;
+}
+
+$btn-round-size-base:   40px;
+$btn-round-size-large:  ceil(($btn-round-size-base * 1.25));
+$btn-round-size-small:  ceil(($btn-round-size-base * 0.85));
+$btn-round-size-xs:  ceil(($btn-round-size-base * 0.65));
+
+.btn-round {
+  border-radius: 50%;
+  padding: 0;
+  @include btn-round-size($btn-round-size-base);
+
+  &.btn-lg {
+    @include btn-round-size($btn-round-size-large);
+  }
+  &.btn-sm {
+    @include btn-round-size($btn-round-size-small);
+  }
+  &.btn-xs {
+    @include btn-round-size($btn-round-size-xs);
+  }
+}
+
+.btn-border {
+  @include box-shadow(none);
+  border: 1.5px;
+  border-color: rgba(0,0,0,0.1);
+  border-style: solid;
+  border-radius: 3px;
+  background-color: transparent;
+
+  &:hover,
+  &:active,
+  &.focus {
+    @include box-shadow(none);
+  }
+}
+
+.btn-flat {
+  @include box-shadow(none);
+
+  &:hover {
+    @include box-shadow(none);
+  }
+  &:active,
+  &.focus {
+    @include box-shadow(none);
+  }
+}
+
+.btn-flat-border {
+  @include box-shadow(none);
+  border-bottom: 2px solid rgba(0,0,0,0.2);
+
+  &:hover {
+    @include box-shadow(none);
+    top:0px;
+    border-bottom: 2px solid rgba(0,0,0,0.2);
+  }
+  &:active,
+  &.focus {
+    @include box-shadow(none);
+    border-bottom: 1px solid rgba(0,0,0,0.25);
+    border-color: rgba(0,0,0,0.25);
+  }
+}
+
+@mixin button-variant-mat($color, $background, $border) {
+  &:hover,
+  &:focus,
+  &.focus,
+  &:active,
+  &.active,
+  .open > &.dropdown-toggle {
+    background-color: darken($background, 5%);
+  }
+}
+
+@mixin button-variant-mat-border($color, $background, $border) {
+  border-color: $background;
+  color: $background;
+
+  &:hover,
+  &:focus,
+  &.focus,
+  &:active,
+  &.active,
+  .open > &.dropdown-toggle {
+    //border-color: darken($background, 10%);
+    //color: darken($background, 10%);
+    color: $color;
+    background-color: $background;
+  }
+}
+
+
+.btn-default {
+  @include button-variant-mat($btn-default-color, $btn-default-bg, $btn-default-border);
+  &.btn-border {
+    border-color: $gray-light;
+    @include button-variant-mat-border($btn-default-bg, $gray-light, $gray-light);
+  }
+}
+
+.btn-primary {
+  @include button-variant-mat($btn-primary-color, $btn-primary-bg, $btn-primary-border);
+  &.btn-border {
+    @include button-variant-mat-border($btn-primary-color, $btn-primary-bg, $btn-primary-border);
+  }
+}
+// Success appears as green
+.btn-success {
+  @include button-variant-mat($btn-success-color, $btn-success-bg, $btn-success-border);
+  &.btn-border {
+    @include button-variant-mat-border($btn-success-color, $btn-success-bg, $btn-success-border);
+  }
+}
+// Info appears as blue-green
+.btn-info {
+  @include button-variant-mat($btn-info-color, $btn-info-bg, $btn-info-border);
+  &.btn-border {
+    @include button-variant-mat-border($btn-info-color, $btn-info-bg, $btn-info-border);
+  }
+}
+// Warning appears as orange
+.btn-warning {
+  @include button-variant-mat($btn-warning-color, $btn-warning-bg, $btn-warning-border);
+  &.btn-border {
+    @include button-variant-mat-border($btn-warning-color, $btn-warning-bg, $btn-warning-border);
+  }
+}
+// Danger and error appear as red
+.btn-danger {
+  @include button-variant-mat($btn-danger-color, $btn-danger-bg, $btn-danger-border);
+  &.btn-border {
+    @include button-variant-mat-border($btn-danger-color, $btn-danger-bg, $btn-danger-border);
+  }
+}
+
+.btn-group {
+  .btn + .btn,
+  .btn + .btn-group,
+  .btn-group + .btn,
+  .btn-group + .btn-group {
+    margin-left: 0;
+  }
+
+  &-vertical {
+    > .btn + .btn,
+    > .btn + .btn-group,
+    > .btn-group + .btn,
+    > .btn-group + .btn-group {
+      margin-top: 0;
+    }
+  }
+}
+
+.btn-primary {
+  @extend .theme-bg;
+
+  &:hover {
+    @extend .theme-bg-darken-1;
+  }
+  &:active {
+    @extend .theme-bg;
+  }
+  &:focus {
+    @extend .theme-bg-accent-4;
+  }
+  &.disabled {
+    @extend .theme-bg-lighten-3;
+  }
+}

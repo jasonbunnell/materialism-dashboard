@@ -1,0 +1,113 @@
+
+
+// Forms ======================================================================
+
+legend {
+  margin-bottom:0px;
+  font-size: 18px;
+  font-weight: 400;
+
+}
+
+.floating-label,
+.form-floating {
+
+  .control-label.normal {
+    @include translate(0, -100%);
+    font-size:90%;
+    padding-bottom:10px;
+  }
+
+  .form-group,
+  &.form-group {
+    position: relative;
+    margin-top: 25px;
+
+  }
+
+  .help-block {
+    margin-bottom: 40px;
+  }
+
+  .hint-block {
+    position: absolute;
+    top: 32px;
+    right: 0px;
+    font-size: 11px;
+  }
+
+  .control-label {
+    position: absolute;
+    left: 0px;
+    top: 7px;
+    margin: 0;
+    pointer-events: none;
+    font-weight: normal;
+    color: rgba(0, 0, 0, 0.4);
+    @include transition(all 0.2s ease-out);
+
+  }
+
+  .active .control-label,
+  .filled .control-label,
+  .filled-static .control-label{
+    @include translate(0, -100%);
+    font-size:90%;
+  }
+}
+
+.datepicker .btn,
+.timepicker .btn {
+  border:none;
+  @include box-shadow(none);
+}
+
+// wysywig editor
+.ta-toolbar {
+  margin:0px;
+
+  .btn {
+    border:none;
+    @include box-shadow(none);
+    border-radius: 0px !important;
+
+    &:active, &.active {
+      @include box-shadow(inset 0 3px 5px rgba(0, 0, 0, 0.125));
+    }
+  }
+
+  .btn-group {
+    margin:0px;
+  }
+}
+
+.ta-editor {
+  border: none !important;
+  @include box-shadow(none !important);
+}
+
+.focussed .ta-bind {
+  @extend .theme-box-inset;
+}
+
+.ta-bind {
+  font-size: 16px;
+  outline: none;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  @include box-shadow(inset 0 -1px 0 #ddd);
+}
+
+.drop-box {
+  background-color: #F1F1F1;
+  text-align: center;
+  height: 100px;
+  line-height: 100px;
+  display: block;
+  border: 1px dashed #DDD;
+
+  &:hover {
+    background-color: #F9F9F9;
+  }
+}

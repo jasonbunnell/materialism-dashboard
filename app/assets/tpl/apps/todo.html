@@ -1,0 +1,71 @@
+<section class="todo-app" ng-controller="TodoController">
+
+  <div class="page-header">
+    <h1>
+      <i class="md md-camera"></i>
+      Todo
+    </h1>
+    <p class="lead">
+      Manage your todo's from the dashboard or here with additional filters.
+    </p>
+  </div>
+
+  <div class="row">
+
+    <div class="col-md-12">
+
+      <div class="well white">
+
+        <form class="form">
+          <div class="form-group input-group">
+            <input id="todo-title" class="form-control" type="text" ng-model="todoService.todo.title">
+            <div class="input-group-btn p-l-10">
+              <button class="btn btn-default ng-animate-disabled" ng-click="todoService.saveTodo()">{{ todoService.todo.editing ? 'Save' : 'Add' }}</button>
+            </div>
+          </div>
+        </form>
+
+      </div>
+
+    </div>
+
+    <div class="col-md-12 filters">
+      <div class="btn-group" role="group" aria-label="Filter todo's">
+        <button ng-repeat="filter in todoService.filters track by $index" class="btn btn-default filter" ng-bind="filter.title" ng-click="todoService.filter(filter.method)" ng-class="[$index == todoService.activeFilter ? 'active' : '']"></button>
+      </div>
+    </div>
+
+    <div class="col-md-12">
+
+      <div class="well white">
+
+        <ul class="list-unstyled" ng-show="todos.length">
+          <li ng-repeat="todo in todos | filter:todoService.todoFilter track by $id($index)">
+            <div class="checkbox">
+              <span class="pull-right">
+                <button type="button" class="btn btn-round btn-flat btn-default" ng-click="todoService.editTodo(todo)">
+                  <i class="md md-edit"></i>
+                </button>
+              </span>
+              <label ng-class="{strike: todo.done}">
+                <input ng-model="todo.done" type="checkbox" ng-click="todoService.toggleDone(todo)" /> {{todo.title}}
+              </label>
+            </div>
+          </li>
+        </ul>
+
+        <div class="alert alert-info" ng-show="!todos.length">
+          <p>No more todo's, you are free!</p>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="col-md-12">
+      <button class="btn btn-info" ng-click="todoService.clearCompleted()">Clear completed todo's</button>
+    </div>
+
+  </div>
+
+</section>

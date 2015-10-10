@@ -1,0 +1,32 @@
+.jvectormap-container {
+  .jvectormap-zoomin, .jvectormap-zoomout {
+    @extend .z-depth-1;
+    @extend .theme-secondary;
+
+    height: 50px;
+    width: 50px;
+    line-height: 50px;
+    font-size: 25px;
+    border-radius: 50%;
+    padding: 0px;
+  }
+  .jvectormap-zoomout {
+    top: 65px;
+  }
+}
+
+.map-canvas {
+  height: 300px;
+}
+
+@media (min-width: $screen-sm-min) {
+  .map-canvas {
+    height: 400px;
+  }
+}
+
+@media (min-width: $screen-md-min) {
+  .map-canvas {
+    height: 600px;
+  }
+}

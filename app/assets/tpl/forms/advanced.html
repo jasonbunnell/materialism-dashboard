@@ -1,0 +1,352 @@
+<section class="forms-advanced" ng-controller="FormsController">
+  <div class="page-header">
+    <h1>
+      <i class="md md-input"></i>
+      Advanced elements
+    </h1>
+    <p class="lead">
+      All form elements we created for you which you can use for your successful web projects!
+    </p>
+  </div>
+
+
+  <div class="row m-b-40">
+    <div class="col-md-3 col-md-push-9" id="general-elements-intro">
+      <h5>General form elements used in basic forms</h5>
+      <p>All the elements are just default bootstrap markup in execption of the selection box which is a <a target="_blank" href="https://github.com/angular-ui/ui-select">Angular ui-select directive</a>.</p>
+    </div>
+
+    <div class="col-md-8 col-md-pull-3">
+      <div class="well white">
+        <form class="form-floating placeholder-form">
+          <fieldset>
+            <legend>General elements</legend>
+            <div class="form-group">
+              <label for="inputEmail" class="control-label">Text input</label>
+              <input type="text" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="inputPassword" class="control-label">Password</label>
+              <input type="password" class="form-control" id="inputPassword">
+            </div>
+            <div class="form-group">
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox"> Checkbox
+                </label>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="textArea" class="control-label">Textarea with autogrow</label>
+              <textarea class="form-control vertical " rows="3" id="textArea"></textarea>
+              <span class="help-block">Help.</span>
+            </div>
+            <div class="form-group">
+              <div class="radio-inline">
+                <label>
+                  <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
+                  Radio option
+                </label>
+              </div>
+              <div class="radio-inline">
+                <label>
+                  <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
+                  Radio option 2
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="control-label normal">Switch</label>
+
+              <div class="switch">
+                <label>
+                  Off
+                  <input type="checkbox">
+                  <span class="lever"></span>
+                  On
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="control-label">Select</label>
+              <select class="form-control">
+                <option>Monkey D. Luffy</option>
+                <option>Roronoa Zoro</option>
+                <option>Tony Tony Chopper</option>
+                <option>Nico Robin</option>
+                <option>Bon Clay</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <ui-select ng-model="person.selected" theme="select2" title="Choose a person" search-enabled="false">
+                <ui-select-match placeholder="Select based on select2">{{$select.selected.name}}</ui-select-match>
+                <ui-select-choices repeat="item in people | filter: $select.search">
+                  <div ng-bind-html="item.name | highlight: $select.search"></div>
+                  <small ng-bind-html="item.email | highlight: $select.search"></small>
+                </ui-select-choices>
+              </ui-select>
+            </div>
+
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="reset" class="btn btn-default">Cancel</button>
+            </div>
+
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="row m-b-40" id="datepickers">
+    <div class="col-md-3 col-md-push-9">
+      <h5>Datepickers</h5>
+      <p>The <a target="_blank" href="http://mgcrea.github.io/angular-strap/#/datepickers">datepickers</a> come from the <a target="_blank" href="http://mgcrea.github.io/angular-strap">AngularStrap</a> module and we placed some default html input date elements to
+        compare functionality.</p>
+    </div>
+    <div class="col-md-8 col-md-pull-3">
+      <div class="well white">
+        <form class="form-floating placeholder-form">
+          <fieldset>
+            <legend>Date pickers</legend>
+
+            <div class="form-group filled">
+              <label class="control-label">Date</label>
+              <input type="text" class="form-control" ng-model="sharedDate" data-autoclose="1" bs-datepicker>
+            </div>
+            <div class="form-group filled">
+              <label class="control-label">Time</label>
+              <input type="text" class="form-control" ng-model="sharedTime" data-autoclose="1" bs-timepicker>
+            </div>
+
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1"><i class="md md-event-available"></i></span>
+
+                <div class="row">
+                  <div class="col-md-5">
+                    <input type="text" class="form-control" ng-model="sharedDate" data-autoclose="1" placeholder="Date"
+                           bs-datepicker>
+                  </div>
+                  <div class="col-md-2">
+                    <input type="text" class="form-control" ng-model="sharedTime" data-autoclose="1" placeholder="Time"
+                           bs-timepicker>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1"><i class="md md-event-available"></i></span>
+
+                <div class="row">
+                  <div class="col-md-6">
+                    <input type="text" class="form-control" ng-model="fromDate" data-max-date="{{untilDate}}"
+                           placeholder="From" bs-datepicker>
+                  </div>
+                  <div class="col-md-6">
+                    <input type="text" class="form-control" ng-model="untilDate" data-min-date="{{fromDate}}"
+                           placeholder="Until" bs-datepicker>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <br/>
+
+            <div class="form-group filled-static">
+              <label for="inputEmail" class="control-label">HTML date picker</label>
+              <input type="date" class="form-control">
+            </div>
+
+            <div class="form-group filled-static">
+              <label for="inputEmail" class="control-label">HTML month picker</label>
+              <input type="month" class="form-control">
+            </div>
+
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="row m-b-40" id="select2-and-typeahead">
+    <div class="col-md-3 col-md-push-9">
+      <h5>Angular ui-select and typeahead variations</h5>
+      <p><a target="_blank" href="https://github.com/angular-ui/ui-select">Angular ui-select</a> is a AngularJS-native version of Select2 and Selectize.</p>
+      <p><a target="_blank" href="http://mgcrea.github.io/angular-strap/#/typeaheads">Typeahead</a> is a lightweight select replacement</p>
+    </div>
+    <div class="col-md-8 col-md-pull-3">
+      <div class="well white">
+        <form class="form">
+          <fieldset>
+            <legend>Select</legend>
+
+            <div class="form-group">
+              <label class="control-label">Angular ui-select</label>
+              <ui-select ng-model="person.selected" theme="select2" title="Choose a person" search-enabled="false">
+                <ui-select-match placeholder="Default select2 box">{{$select.selected.name}}</ui-select-match>
+                <ui-select-choices repeat="item in people | filter: $select.search">
+                  <div ng-bind-html="item.name | highlight: $select.search"></div>
+                  <small ng-bind-html="item.email | highlight: $select.search"></small>
+                </ui-select-choices>
+              </ui-select>
+            </div>
+
+            <div class="form-group">
+              <label class="control-label">Angular ui-select multiple</label>
+              <ui-select multiple ng-model="multipleDemo.colors" theme="select2" ng-disabled="disabled" close-on-select="false" title="Choose a color">
+                <ui-select-match placeholder="Select colors...">{{$item}}</ui-select-match>
+                <ui-select-choices repeat="color in availableColors | filter:$select.search">
+                  {{color}}
+                </ui-select-choices>
+              </ui-select>
+            </div>
+
+            <br />
+
+            <div class="form-group">
+              <label><i class="md md-keyboard"></i> Typeahead</label>
+              <input type="text" class="form-control" ng-model="selectedState" bs-options="state for state in states" placeholder="Enter state" bs-typeahead>
+            </div>
+
+          </fieldset>
+        </form>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row m-b-40" id="fileupload">
+    <div class="col-md-3 col-md-push-9">
+      <h5>File upload</h5>
+      <p>Lightweight <a target="_blank" href="https://github.com/danialfarid/angular-file-upload">AngularJS directive</a> to upload files.</p>
+    </div>
+    <div class="col-md-8 col-md-pull-3">
+      <div class="well white">
+        <form class="form">
+          <fieldset>
+            <legend class="m-b-10">File upload</legend>
+
+            <div ng-controller="UploadController">
+
+              <div class="form-group">
+                <div class="btn btn-info" ng-multiple="true" ngf-select ng-model="files">Upload with button</div>
+              </div>
+
+              <div class="form-group">
+                <label class="control-label">Upload with form element</label>
+                <input type="file" ngf-select ng-model="files" name="file" accept="image/*" />
+              </div>
+
+              <div class="form-group">
+                <label class="control-label">Upload with drag drop</label>
+
+                <div ngf-drop
+                     ngf-select
+                     ng-model="files"
+                     class="drop-box"
+                     ngf-drag-over-class="dragover"
+                     ngf-multiple="true"
+                     ngf-allow-dir="true"
+                     ngf-accept="'.jpg,.png,.gif'">Select or Drop Images here</div>
+                <div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>
+
+              </div>
+
+              <ul style="clear:both" ng-show="files.length > 0" class="response list-unstyled">
+                <li class="sel-file" ng-repeat="f in files">
+                  <img ng-show="f.dataUrl" ng-src="{{f.dataUrl}}" class="thumb">
+                  <span class="progress" ng-show="f.progress >= 0">
+                    <div style="width:{{f.progress}}%">{{f.progress}}%</div>
+                  </span>
+                  <button class="button" ng-click="f.upload.abort();f.upload.aborted=true"
+                          ng-show="f.upload != null && f.progress < 100 && !f.upload.aborted">Abort</button>
+                  {{f.name}} - size: {{f.size}}B - type: {{f.type}}
+                  <a ng-show="f.result" href="javascript:void(0)" ng-click="f.showDetail = !f.showDetail">details</a>
+                  <div ng-show="f.showDetail">
+                    <br/>
+                    <div data-ng-show="f.result.result == null">{{f.result}}</div>
+                    <ul>
+                      <li ng-repeat="item in f.result.result">
+                        <div data-ng-show="item.name">file name: {{item.name}}</div>
+                        <div data-ng-show="item.fieldName">name: {{item.fieldName}}</div>
+                        <div data-ng-show="item.size">size on the serve: {{item.size}}</div>
+                        <div data-ng-show="item.value">value: {{item.value}}</div>
+                      </li>
+                    </ul>
+                    <div data-ng-show="f.result.requestHeaders" class="reqh">request headers: {{f.result.requestHeaders}}</div>
+                  </div>
+                </li>
+              </ul>
+
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="row m-b-40" id="wysiwyg">
+    <div class="col-md-3 col-md-push-9">
+      <h5>Text editor</h5>
+      <p><a target="_blank" href="http://textangular.com/">textAngular</a> is a super cool WYSIWYG Text Editor directive for AngularJS.</p>
+    </div>
+    <div class="col-md-8 col-md-pull-3">
+      <div class="well white">
+        <form class="form">
+          <fieldset>
+            <legend>textAngular editor</legend>
+
+            <div class="form-group">
+              <text-angular-toolbar name="toolbar1" ta-toolbar="[['h1', 'h2', 'h3', 'p', 'quote'],['bold', 'italics', 'ul', 'ol', 'redo', 'undo', 'insertImage', 'insertLink', 'insertVideo']]"></text-angular-toolbar>
+              <text-angular name="htmlcontent" ng-model="data.htmlcontent" ta-target-toolbars='toolbar1,toolbar2'></text-angular>
+              <text-angular-toolbar name="toolbar2" ta-toolbar="[['html', 'charcount', 'wordcount']]"></text-angular-toolbar>
+            </div>
+
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="row m-b-40" id="noui-slider">
+    <div class="col-md-3 col-md-push-9">
+      <h5>Sliders</h5>
+      <p><a target="_blank" href="http://refreshless.com/nouislider/">noUiSlider</a> is a range slider without bloat. It offers a ton off features, and it is as small, lightweight and minimal as possible, which is great for mobile use on the many supported devices, including iPhone, iPad, Android devices & Windows (Phone) 8 desktops, tablets and all-in-ones. It works on desktops too, of course!</p>
+    </div>
+    <div class="col-md-8 col-md-pull-3">
+      <div class="well white">
+        <form class="form">
+          <fieldset>
+            <legend>Sliders</legend>
+
+            <div class="form-group">
+              <label class="control-label">Standard slider</label>
+              <div id="slider" noui-slider min="0" max="21" start="6" step="0"></div>
+            </div>
+
+            <div class="form-group">
+              <label class="control-label">With bind</label>
+              <div id="slider" noui-slider min="0" max="100" start="6" range="25" bind=".sliderval" bind-range=".sliderval2" step="1"></div>
+              <span class="help-block ">
+                Value from slider: <span class="sliderval">6</span> / <span class="sliderval2">25</span>
+              </span>
+            </div>
+
+            <div class="form-group">
+              <label class="control-label">With indicator</label>
+              <div id="range" noui-slider min="0" max="20" start="16" step="2" indicator="true"></div>
+            </div>
+
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</section>

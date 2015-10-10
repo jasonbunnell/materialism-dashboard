@@ -1,0 +1,152 @@
+// Sidenav =================================================================
+
+#sidenav-overlay {
+  position: absolute;
+  left: 0;
+  top: -65px;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1036;
+  will-change: opacity;
+}
+
+.drag-target {
+  height: 100%;
+  width: 10px;
+  position: fixed;
+  top: 0;
+  z-index: 998;
+}
+
+aside.sidebar {
+  left: 0;
+  position: fixed;
+  width: $sidenav-width;
+  top: 0;
+  margin: 0;
+  height: 100%;
+  padding-bottom: 60px;
+  z-index: 1037;
+  will-change: left;
+  font-size:13px;
+  overflow: auto;
+  background-color:#E8E8E8;
+  border-right: 1px rgba(0, 0, 0, 0.07) solid;
+
+  > ul {
+    margin-top:50px;
+  }
+
+  a.collapsible-header {
+    font-weight:600;
+  }
+
+  a.collapsible-header:after {
+    content: "\f29e";
+    display: inline-block;
+    font: normal normal normal 14px/1 'Material Design Iconic Font';
+    font-size: inherit;
+    speak: none;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+
+    position: absolute;
+    right: 20px;
+    top: 16px;
+    font-size: 22px;
+
+    @include transition(transform 0.3s ease-in-out);
+    @extend .theme-text-lighten-1;
+  }
+  a.collapsible-header.active:after {
+    @include rotate(180deg);
+  }
+
+  a.collapsible-header.active {
+    background: rgba(0, 0, 0, 0.05);
+  }
+
+  i {
+    font-size: 20px;
+    line-height: 23px;
+    margin-right: 5px;
+    color: #BEBEBE;
+  }
+
+  ul a {
+    margin: 0;
+    padding: 15px 0 15px 22px;
+
+    color: #737373;
+
+    display:block;
+    position:relative;
+
+    &:hover, &.active {
+      background: rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  ul {
+    list-style-type: none;
+    margin:0px;
+    padding:0px;
+  }
+
+  ul ul a {
+    padding: 8px 15px 8px 46px;
+  }
+
+  .user-logged-in {
+    min-height:100px;
+    position:relative;
+    display: table;
+    width: 100%;
+    @include box-shadow(inset 0px 0px 2px rgba(0, 0, 0, 0.1));
+
+    .content {
+      display: table-cell;
+      vertical-align: middle;
+      padding:0 22px;
+      text-transform: uppercase;
+
+      .user-name {
+        font-size: 16px;
+        line-height: 18px;
+      }
+      .user-email {
+        font-size: 13px;
+        color: #999;
+        line-height: 15px;
+      }
+      .user-actions {
+        margin-top:7px;
+        font-size:10px;
+      }
+    }
+  }
+  .user-logged-in:after {
+    content: "";
+    background: url(../img/user-bg.png);
+    background-size: cover;
+    opacity: 0.2;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;
+  }
+
+}
+
+@media only screen and (max-width: 992px) {
+  main, footer {
+    padding-left: 0;
+  }
+
+  aside.sidebar {
+    left: -105%;
+  }
+}

@@ -1,0 +1,29 @@
+<div class="alert" ng-class="[type ? 'alert-' + type : null]">
+  <button type="button" class="close" ng-if="dismissable" ng-click="$hide()">&times;</button>
+  <div class="strong" ng-bind="title"></div>
+  <div ng-bind-html="content"></div>
+
+  <div class="row m-t-20 m-b-10">
+    <div class="col-xs-3 text-center">
+      <i class="md md-settings f60" style="line-height: 75px;"></i>
+    </div>
+    <div class="col-xs-9">
+      <div class="strong">Theme picker</div>
+      <p>
+        Use the themepicker to change the basic colors of the admin template.
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-3">
+      <img src="assets/img/crud.png" class="img-responsive" />
+    </div>
+    <div class="col-xs-9">
+      <div class="strong">APPS
+      </div>
+      <p>
+        Play around with our crud app which is a beautifull way to create admin functionality.
+      </p>
+    </div>
+  </div>
+</div>

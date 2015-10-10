@@ -1,0 +1,55 @@
+// c3
+
+.c3 {
+  .c3-tooltip {
+    th {
+      @extend .theme-secondary-bg;
+    }
+    tr {
+      border: none;
+    }
+    td {
+      border-left: 1px solid rgba(0, 0, 0, 0.04);
+      padding: 3px 8px;
+      color: #5C5C5C;
+
+      .value {
+        font-weight: 600;
+      }
+    }
+  }
+
+  .c3-axis-x, .c3-axis-y, .c3-axis-y2 {
+    .tick {
+      text {
+        fill: $chart-text-color;
+      }
+    }
+  }
+
+  .c3-grid line {
+    stroke: rgba(0,0,0,0.1);
+  }
+  path, line {
+    stroke: $chart-line-color;
+  }
+
+  .c3-circle {
+    fill: #42A5F5;
+    stroke-width: 2px;
+    stroke: white;
+  }
+
+  .c3-circle._expanded_ {
+    stroke-width: 2px;
+    stroke: white;
+  }
+
+  .c3-xgrid-focus line {
+    stroke: rgba(0,0,0,0.1);
+  }
+  .c3-xgrid, .c3-ygrid {
+    stroke-dasharray: $chart-grid-dotted;
+  }
+
+}

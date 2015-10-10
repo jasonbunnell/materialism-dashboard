@@ -1,0 +1,83 @@
+$theme-color-variations: (
+  1: 'lighten-1',
+  2: 'darken-1'
+);
+$theme-secondary-color-variations: (
+  3: 'lighten-1',
+  4: 'darken-1'
+);
+
+.theme-picker {
+  min-width: 400px;
+  overflow: hidden;
+
+  .theme-item {
+    overflow: hidden;
+    @include box-shadow(0 0 1px rgba(0, 0, 0, 0.2));
+    margin-bottom: 15px;
+    height: 40px;
+    cursor: pointer;
+    position:relative;
+
+    &:hover {
+      @extend .z-depth-0;
+    }
+
+    .icon {
+      position: absolute;
+      color: #FFF;
+      font-size: 20px;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.3);
+    }
+
+    .theme-sidenav {
+      width:30%;
+      height:40px;
+      float:left;
+    }
+    .theme-header {
+      height:20px;
+      width:70%;
+      float:left;
+      background:#fff;
+    }
+    .theme-body {
+      height:20px;
+      width:70%;
+      float:left;
+      background:#F9F9F9;
+    }
+
+    .theme-color-1,
+    .theme-color-2 {
+      width:50%;
+      height:30px;
+      float:left;
+    }
+
+    .theme-color-3,
+    .theme-color-4 {
+      width:50%;
+      height:10px;
+      float:left;
+    }
+
+    @each $color-name, $c in $theme-colors {
+      &.theme-#{$color-name} {
+        @each $i, $variation in $theme-color-variations {
+          .theme-color-#{$i}{
+            background: color($color-name, $variation);
+          }
+        }
+        @each $i, $variation in $theme-secondary-color-variations {
+          .theme-color-#{$i}{
+            background: color(map-get($theme-secondary-colors, $color-name), $variation);
+          }
+        }
+      }
+    }
+  }
+}

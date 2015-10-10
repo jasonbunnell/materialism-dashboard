@@ -1,0 +1,67 @@
+// Switch ======================================================================
+
+.switch,
+.switch * {
+  @include user-select(none);
+}
+.switch label {
+  cursor: pointer;
+}
+.switch label input[type=checkbox]{
+  opacity: 0;
+  width: 0;
+  height: 0;
+  margin:0px;
+}
+.switch label input[type=checkbox]:checked + .lever {
+  @extend .theme-bg-lighten-3;
+}
+.switch label input[type=checkbox]:checked + .lever:after {
+  @extend .theme-bg;
+}
+.switch label .lever {
+  content: "";
+  display: inline-block;
+  position: relative;
+  width: 40px;
+  height: 15px;
+  background-color: color('grey', 'lighten-2');
+  border-radius: 15px;
+  margin-right: 10px;
+  @include transition(background 0.3s ease);
+  vertical-align: middle;
+  margin: 0px 16px;
+}
+.switch label .lever:after {
+  content: "";
+  position: absolute;
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  background-color: color('shades','white');
+  border-radius: 21px;
+  @include box-shadow(0 1px 1px 1px rgba(0, 0, 0, 0.2));
+  left: -5px;
+  top: -5px;
+  @include transition(left 0.3s ease, background 0.3s ease, box-shadow 0.1s ease);
+}
+// Switch active style
+input[type=checkbox]:checked:not(:disabled) ~ .lever:active:after {
+  @include box-shadow(0 1px 3px 1px rgba(0,0,0,0.4), 0 0 0 15px transparentize($theme-primary, .9));
+}
+input[type=checkbox]:not(:disabled) ~ .lever:active:after {
+  @include box-shadow(0 1px 3px 1px rgba(0,0,0,0.4), 0 0 0 15px rgba(0, 0, 0, 0.08));
+}
+.switch label input[type=checkbox]:checked + .lever:after {
+  left: 24px;
+}
+
+// Disabled Styles
+
+.switch input[type=checkbox][disabled] + .lever{
+  cursor: default;
+}
+.switch label input[type=checkbox][disabled] + .lever:after,
+.switch label input[type=checkbox][disabled]:checked + .lever:after {
+  background-color: $input-bg-disabled;
+}

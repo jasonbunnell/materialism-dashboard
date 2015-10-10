@@ -1,0 +1,195 @@
+<section class="charts" ng-controller="ChartsController">
+
+  <div class="page-header">
+    <h1>
+      <i class="md md-insert-chart"></i>
+      Charts
+    </h1>
+    <p class="lead">
+      These charts are based on <a target="_blank" href="http://c3js.org/">C3</a>.<br />
+      And can be created using <a target="_blank" href="https://github.com/jettro/c3-angular-directive">simple directives</a>.
+    </p>
+  </div>
+
+  <div class="row">
+
+    <div class="col-sm-12 col-md-6">
+      <div class="card line-chart small">
+        <div class="card-header">
+          <div class="card-title">Line charts</div>
+        </div>
+        <div class="card-content">
+          <c3chart bindto-id="line-chart">
+            <chart-column column-id="Data 1"
+                          column-values="30,200,100,400,150,250,50"
+                          column-type="line"/>
+            <chart-colors color-pattern="{{color_pattern}}"/>
+          </c3chart>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-12 col-md-6">
+      <div class="card small area-chart">
+        <div class="card-header">
+          <div class="card-title">Area charts</div>
+        </div>
+        <div class="card-content">
+          <c3chart bindto-id="area-chart">
+            <chart-column column-id="Data 2"
+                          column-values="140,100,150,200,150,0"
+                          column-type="area-spline"/>
+            <chart-column column-id="Data 1"
+                          column-values="300,350,300,0"
+                          column-type="area"/>
+            <chart-colors color-pattern="{{color_pattern}}"/>
+          </c3chart>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-6 col-md-4">
+      <div class="card small load-chart">
+        <div class="card-header">
+          <div class="card-title">Server load</div>
+        </div>
+        <div class="card-content">
+          <div id="load-chart"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-6 col-md-4">
+      <div class="card small cpu-chart">
+        <div class="card-header">
+          <div class="card-title">CPU load</div>
+        </div>
+        <div class="card-content">
+          <div id="cpu-chart"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-6 col-md-4">
+      <div class="card small mem-chart">
+        <div class="card-header">
+          <div class="card-title">Memory load</div>
+        </div>
+        <div class="card-content">
+          <div id="mem-chart"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-12 col-md-6">
+      <div class="card small bar-chart">
+        <div class="card-header">
+          <div class="card-title">Bar charts</div>
+        </div>
+        <div class="card-content">
+          <c3chart bindto-id="bar-chart">
+            <chart-column column-id="Data 3"
+                          column-values="130,-150,200,300,-200,100"
+                          column-type="bar"/>
+            <chart-column column-id="Data 2"
+                          column-values="130,100,140,200,150,50"
+                          column-type="bar"/>
+            <chart-column column-id="Data 1"
+                          column-values="30,200,100,400,150,250"
+                          column-type="bar"/>
+            <chart-colors color-pattern="{{color_pattern}}"/>
+          </c3chart>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-12 col-md-6">
+      <div class="card small step-chart">
+        <div class="card-header">
+          <div class="card-title">Step charts</div>
+        </div>
+        <div class="card-content">
+          <c3chart bindto-id="step-chart">
+            <chart-column column-id="Data 2"
+                          column-values="130,100,140,200,150,50"
+                          column-type="area-step"/>
+            <chart-column column-id="Data 1"
+                          column-values="300,350,300,0,0,100"
+                          column-type="step"/>
+            <chart-colors color-pattern="{{color_pattern}}"/>
+          </c3chart>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-12 col-md-12">
+      <div class="card small scatter-plot-chart">
+        <div class="card-header">
+          <div class="card-title">Scatter plot charts</div>
+        </div>
+        <div class="card-content">
+          <c3chart bindto-id="scatter-plot-chart">
+            <chart-column column-id="Data 2"
+                          column-values="2.5, 1.9, 2.1, 1.8, 2.2, 2.1, 1.7, 1.8, 1.8, 2.5, 2.0, 1.9, 2.1, 2.0, 2.4, 2.3, 1.8, 2.2, 2.3, 1.5, 2.3, 2.0, 2.0, 1.8, 2.1, 1.8, 1.8, 1.8, 2.1, 1.6, 1.9, 2.0, 2.2, 1.5, 1.4, 2.3, 2.4, 1.8, 1.8, 2.1, 2.4, 2.3, 1.9, 2.3, 2.5, 2.3, 1.9, 2.0, 2.3, 1.8"
+                          column-type="scatter"/>
+            <chart-column column-id="Data 2 x"
+                          column-values="3.3, 2.7, 3.0, 2.9, 3.0, 3.0, 2.5, 2.9, 2.5, 3.6, 3.2, 2.7, 3.0, 2.5, 2.8, 3.2, 3.0, 3.8, 2.6, 2.2, 3.2, 2.8, 2.8, 2.7, 3.3, 3.2, 2.8, 3.0, 2.8, 3.0, 2.8, 3.8, 2.8, 2.8, 2.6, 3.0, 3.4, 3.1, 3.0, 3.1, 3.1, 3.1, 2.7, 3.2, 3.3, 3.0, 2.5, 3.0, 3.4, 3.0" />
+            <chart-column column-id="Data 1"
+                          column-values="1.4, 1.5, 1.5, 1.3, 1.5, 1.3, 1.6, 1.0, 1.3, 1.4, 1.0, 1.5, 1.0, 1.4, 1.3, 1.4, 1.5, 1.0, 1.5, 1.1, 1.8, 1.3, 1.5, 1.2, 1.3, 1.4, 1.4, 1.7, 1.5, 1.0, 1.1, 1.0, 1.2, 1.6, 1.5, 1.6, 1.5, 1.3, 1.3, 1.3, 1.2, 1.4, 1.2, 1.0, 1.3, 1.2, 1.3, 1.3, 1.1, 1.3"
+                          column-type="scatter"/>
+            <chart-column column-id="Data 1 x"
+                          column-values="3.2, 3.2, 3.1, 2.3, 2.8, 2.8, 3.3, 2.4, 2.9, 2.7, 2.0, 3.0, 2.2, 2.9, 2.9, 3.1, 3.0, 2.7, 2.2, 2.5, 3.2, 2.8, 2.5, 2.8, 2.9, 3.0, 2.8, 3.0, 2.9, 2.6, 2.4, 2.4, 2.7, 2.7, 3.0, 3.4, 3.1, 2.3, 3.0, 2.5, 2.6, 3.0, 2.6, 2.3, 2.7, 3.0, 2.9, 2.9, 2.5, 2.8" />
+            <chart-axes values-xs="Data 1:Data 1 x,Data 2:Data 2 x" />
+            <chart-colors color-pattern="{{color_pattern}}"/>
+          </c3chart>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-12 col-md-6">
+      <div class="card small pie-chart">
+        <div class="card-header">
+          <div class="card-title">Pie charts</div>
+        </div>
+        <div class="card-content">
+          <c3chart bindto-id="pie-chart">
+            <chart-column column-id="Data 3"
+                          column-values="130"
+                          column-type="pie"/>
+            <chart-column column-id="Data 2"
+                          column-values="120"
+                          column-type="pie"/>
+            <chart-column column-id="Data 1"
+                          column-values="30"
+                          column-type="pie"/>
+            <chart-colors color-pattern="{{color_pattern}}"/>
+          </c3chart>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-12 col-md-6">
+      <div class="card small donut-chart">
+        <div class="card-header">
+          <div class="card-title">Donut charts</div>
+        </div>
+        <div class="card-content">
+          <c3chart bindto-id="donut-chart">
+            <chart-column column-id="Data 3"
+                          column-values="7"
+                          column-type="donut"/>
+            <chart-column column-id="Data 2"
+                          column-values="36"
+                          column-type="donut"/>
+            <chart-column column-id="Data 1"
+                          column-values="56"
+                          column-type="donut"/>
+            <chart-colors color-pattern="{{color_pattern}}"/>
+          </c3chart>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</section>

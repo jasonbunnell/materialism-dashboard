@@ -1,0 +1,92 @@
+<section class="maps-widgets">
+
+  <div class="page-header">
+    <h1>
+      <i class="md md-place"></i>
+      Map widgets
+    </h1>
+    <p class="lead">
+      Maps can be embedded serving various functions.
+    </p>
+  </div>
+
+  <div class="row">
+
+    <div class="col-sm-12 col-md-6" ng-controller="ClickableMapController">
+      <div class="card bordered small" id="card-map-clickable">
+        <div class="card-header">
+          <div class="card-title"><i class="md md-place"></i> Clickable locations</div>
+        </div>
+        <div class="card-content">
+          <div class="btn-group" ng-model="button.radio" aria-label="Locations" bs-radio-group>
+            <label ng-repeat="marker in markers track by $index" class="btn btn-secondary">
+              <input type="radio" value="{{$index}}"> <span ng-click="centerOn(marker.latitude, marker.longitude)">{{marker.title}}</span>
+            </label>
+          </div>
+        </div>
+        <div style="height:350px;">
+          <ui-gmap-google-map center="map.center" zoom="map.zoom">
+            <ui-gmap-markers models="markers" coords="'self'" icon="'icon'"></ui-gmap-markers>
+          </ui-gmap-google-map>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-12 col-md-6" ng-controller="SearchableMapController">
+      <div class="card bordered small" id="card-map-searchable">
+        <div class="card-header">
+          <div class="card-title"><i class="md md-place"></i> Searchable map</div>
+        </div>
+        <div class="card-content">
+          <form>
+            <div class="row">
+              <div class="col-md-10">
+                <input type="text" class="form-control" placeholder="Search" ng-model="query">
+              </div>
+              <div class="col-md-2 no-p-l">
+                <button type="submit" class="btn btn-default fullwidth" ng-click="searchFor(query)">Search</button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div style="height:350px;">
+          <ui-gmap-google-map center="map.center"
+                              zoom="map.zoom"
+                              control="map.control">
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-12 col-md-6" ng-controller="ZoomableMapController">
+      <div class="card bordered small" id="card-map-zoomable">
+        <div class="card-header">
+          <div class="card-title"><i class="md md-place"></i> Zoomable map</div>
+        </div>
+
+        <div style="height:350px;">
+          <ui-gmap-google-map center="map.center"
+                              zoom="map.zoom"
+                              events="map.events"
+                              control="map.control">
+        </div>
+
+        <div class="card-content">
+          <div id="slider" noui-slider min="0" max="21" start="6"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-12 col-md-6" ng-controller="BasicMapController">
+      <div class="card bordered small" id="card-map-basic">
+        <div class="card-header">
+          <div class="card-title"><i class="md md-place"></i> Basic map</div>
+        </div>
+        <div style="height:350px;">
+          <ui-gmap-google-map center="map.center" zoom="map.zoom"></ui-gmap-google-map>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</section>

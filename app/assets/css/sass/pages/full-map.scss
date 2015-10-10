@@ -1,0 +1,33 @@
+.full-page-map {
+  height: 100%;
+  body {
+    height: 100%;
+  }
+  main {
+    height: 100%;
+    .main-container {
+      height: 100%;
+      padding-bottom: 0;
+      .main-content {
+        height: 100%;
+        margin-top: 0;
+        > section {
+          padding: 0;
+        }
+      }
+    }
+  }
+}
+
+#full-map-canvas {
+  position: absolute;
+  top: 64px;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+.angular-google-map, .angular-google-map-container {
+  height: 100%;
+  width: 100%;
+}

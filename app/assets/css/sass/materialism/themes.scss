@@ -1,0 +1,184 @@
+//== Theme colors
+$theme-colors: (
+  "red": $red,
+  "pink": $pink,
+  "purple": $purple,
+  "deep-purple": $deep-purple,
+  "indigo": $indigo,
+  "blue": $blue,
+  "light-blue": $light-blue,
+  "cyan": $cyan,
+  "teal": $teal,
+  "green": $green,
+  "light-green": $light-green,
+  "lime": $lime,
+  "yellow": $yellow,
+  "amber": $amber,
+  "orange": $orange,
+  "deep-orange": $deep-orange
+);
+
+$theme-secondary-colors: (
+  "red": "light-blue",
+  "pink": "blue",
+  "purple": "cyan",
+  "deep-purple": "green",
+  "indigo": "light-green",
+  "blue": "cyan",
+  "light-blue": "orange",
+  "cyan": "purple",
+  "teal": "red",
+  "green": "brown",
+  "light-green": "deep-orange",
+  "lime": "red",
+  "yellow": "pink",
+  "amber": "purple",
+  "orange": "deep-purple",
+  "deep-orange": "amber"
+);
+
+
+// == Main template themes (mainly static values)
+
+.theme-picker {
+  .theme-template-default .theme-sidenav {
+    background: #E8E8E8;
+  }
+  .theme-template-dark .theme-sidenav {
+    background: #474747;
+  }
+  .theme-template-light .theme-sidenav {
+    background: #fff;
+  }
+  .theme-template-green .theme-sidenav {
+    background: color("green");
+  }
+  .theme-template-blue .theme-sidenav {
+    background: color("blue");
+  }
+}
+
+.theme-template-default {
+  .sidebar {
+    background: #E8E8E8;
+  }
+}
+
+.theme-template-dark {
+  .sidebar {
+    background: #474747;
+    color: #FFF;
+
+    ul a,
+    .brand-logo {
+      color: #E7E7E7;
+    }
+
+    .user-logged-in a {
+      @extend .theme-secondary-text-lighten-3;
+    }
+  }
+}
+
+.theme-template-light {
+  .sidebar {
+    background: #fff;
+
+    ul a,
+    .brand-logo {
+      color: #797979;
+    }
+  }
+}
+
+.theme-template-green {
+  .sidebar {
+    background: color("green", 'accent-4');
+
+    .brand-logo {
+      .foot1,
+      .foot3 {
+        background-color: color('green', 'darken-3') !important;
+      }
+      .foot2,
+      .foot4 {
+        background-color: color('green', 'darken-1') !important;
+      }
+    }
+
+    .user-logged-in .content {
+      .user-name {
+        color: #fff;
+      }
+      .user-email,
+      .text-muted {
+        color: rgba(0, 0, 0, 0.5);
+      }
+      .user-actions a {
+        color: color("green", 'darken-3');
+      }
+    }
+
+    a.collapsible-header:after,
+    i {
+      color: rgba(0,0,0,0.3) !important;
+    }
+
+    ul a,
+    .brand-logo {
+      color: #fff;
+    }
+  }
+}
+
+.theme-template-blue {
+  .sidebar {
+    background: color("light-blue", 'accent-2');
+
+    .brand-logo {
+      .foot1,
+      .foot3 {
+        background-color: color('blue', 'darken-3') !important;
+      }
+      .foot2,
+      .foot4 {
+        background-color: color('blue', 'darken-1') !important;
+      }
+    }
+
+    .user-logged-in .content {
+      .user-name {
+        color: #fff;
+      }
+      .user-email,
+      .text-muted {
+        color: rgba(0, 0, 0, 0.5);
+      }
+      .user-actions a {
+        color: color("blue", 'darken-3');
+      }
+    }
+
+    a.collapsible-header:after,
+    i {
+      color: rgba(0,0,0,0.3) !important;
+    }
+
+    ul a,
+    .brand-logo {
+      color: #fff;
+    }
+  }
+
+}
+
+@each $color-name, $c in $theme-colors {
+  .theme-#{$color-name} {
+    @each $color-type, $color-value in map-get($colors, $color-name) {
+      @include theme-colors($color-value, true, $color-type);
+    }
+    @each $color-type, $color-value in map-get($colors, map-get($theme-secondary-colors, $color-name)) {
+      @include theme-colors($color-value, false, $color-type);
+    }
+  }
+}

@@ -1,0 +1,266 @@
+
+// Cards ======================================================================
+
+.card {
+
+  position: relative;
+  background-color: $card-bg-color;
+  @include box-sizing(border-box);
+  border-radius: 2px;
+  @extend .z-depth-0;
+  margin-bottom:30px;
+
+  &.card-flip {
+    overflow:hidden;
+  }
+
+  .card-profile {
+    position: relative;
+    z-index: 1;
+    margin-top: -62px;
+    border-radius: 50%;
+    padding: 5px;
+    background-color: #FFF;
+    @include box-shadow(0px -3px 3px rgba(0, 0, 0, 0.2));
+
+    img[src*=svg] {
+      width: 75px;
+      height: 75px;
+    }
+  }
+
+
+  .pagination {
+    margin:0px;
+  }
+  .activator {
+    cursor:pointer;
+  }
+
+  .list-group {
+    margin:0px;
+
+    .list-group-item {
+      border:none;
+      border-top: 1px solid $list-group-border;
+      font-size:16px;
+      padding: 10px 15px;
+
+      &.active {
+        @extend .theme-secondary-bg;
+      }
+
+      &:hover {
+        @extend .theme-secondary-bg-lighten-5;
+      }
+
+      img {
+        max-height:40px;
+      }
+
+      .list-group-item-heading {
+        font-size: 14px;
+        margin-bottom: 0px;
+        line-height: 20px;
+      }
+      .list-group-item-text {
+        font-size:12px;
+
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        display: block;
+      }
+
+      .list-actions {
+        float: right;
+        position: relative;
+        margin: -10px -15px;
+      }
+
+      .btn {
+        font-size: 18px;
+        line-height: 36px;
+      }
+
+      &:first-child {
+        border:none;
+      }
+    }
+  }
+
+
+
+  .btn-icon {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 22px;
+    padding: 0px;
+    line-height: 40px;
+  }
+
+  .card-header {
+    padding: $card-padding;
+    clear:both;
+    background-color: #FCFCFC;
+
+    .actions {
+      line-height: 40px;
+      font-size: 20px;
+      float:right;
+    }
+
+    .floating-actions {
+      position:absolute;
+      z-index:2;
+      bottom: -20px;
+      right: 35px;
+
+      .btn {
+        box-shadow: none;
+        &:hover {
+          @include box-shadow(0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15));
+        }
+      }
+    }
+
+    &.alert {
+      color: #fff;
+
+      &-success {
+        background-color: $brand-success;
+      }
+
+      &-info {
+        background-color: $brand-info;
+      }
+
+      &-warning {
+        background-color: $brand-warning;
+      }
+
+      &-danger {
+        background-color: $brand-danger;
+      }
+    }
+  }
+
+  .card-title {
+    font-size: 17px;
+    font-weight: 400;
+    margin:0px;
+    line-height: 16px;
+
+    &.activator {
+      cursor: pointer;
+    }
+  }
+
+  .card-image {
+    position: relative;
+
+    // Image background for content
+    img {
+      border-radius: 2px 2px 0 0;
+      position: relative;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+    }
+
+    .card-title {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      padding: $card-padding;
+      color: #fff;
+      text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.6);
+    }
+
+  }
+
+  .card-content {
+    padding: $card-padding;
+    border-radius: 0 0 2px 2px;
+    @include box-sizing(border-box);
+
+    p {
+      margin: 0;
+    }
+  }
+
+  .card-action {
+    padding: $card-padding;
+  }
+
+  &.bordered {
+    .card-action {
+      border-top: 1px solid #F0F0F0;
+    }
+    .card-header {
+      border-bottom: 1px solid #F0F0F0;
+    }
+  }
+
+  .card-reveal {
+    padding: $card-padding;
+    position: absolute;
+    background-color: #FFF;
+    width: 100%;
+    overflow-y: auto;
+    top: 100%;
+    height: 100%;
+    z-index: 1;
+    @include translate(0, 0);
+    @include transition-transform(0.3s ease-in-out);
+
+    &.active {
+      @include translate(0, -100%);
+    }
+
+    .card-title {
+      cursor: pointer;
+      display: block;
+    }
+
+    @include box-sizing(border-box);
+  }
+
+  &.small {
+    font-size:13px;
+
+    .card-header,
+    .card-action {
+      padding: 10px 15px;
+
+      .action {
+        margin-top:-5px;
+        .btn-icon {
+          width: 25px;
+          height: 25px;
+          font-size: 13px;
+          line-height: 25px;
+        }
+      }
+    }
+    .card-title {
+      font-size: 14px;
+    }
+    .card-content {
+      padding: 15px;
+    }
+  }
+
+  &.large {
+    .card-content {
+      padding: 25px;
+    }
+    .card-title {
+      font-size: 26px;
+      padding-bottom:5px;
+    }
+  }
+}

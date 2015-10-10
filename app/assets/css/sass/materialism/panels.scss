@@ -1,0 +1,40 @@
+// Panels ======================================================================
+
+.panel {
+  &.theme-primary-bg,
+  &.theme-secondary-bg,
+  &.theme-third-bg,
+  &.theme-fourth-bg {
+    a {
+      color: white;
+      h2 {
+        color: white;
+      }
+    }
+  }
+}
+.panel {
+  &.weather {
+    background-color: color("blue", "lighten-1");
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+    .degrees {
+      display: inline-block;
+      vertical-align: top;
+      line-height: normal;
+      font-size: 30px;
+      i {
+        font-weight: bold;
+      }
+    }
+    .weather-icon {
+      padding: 9px 0;
+
+      i {
+        font-size: 100px;
+      }
+      text-align: center;
+    }
+  }
+}

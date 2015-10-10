@@ -1,0 +1,58 @@
+<form class="form-floating" id="form-validation">
+  <fieldset>
+    <legend>Validation</legend>
+    <div class="form-group">
+      <label class="control-label">Required</label>
+      <input type="text" class="form-control" required data-error="This field is required">
+      <div class="help-block with-errors"></div>
+    </div>
+    <div class="form-group">
+      <label class="control-label">Email</label>
+      <input type="email" class="form-control" required data-error="That email address is invalid">
+      <div class="help-block with-errors"></div>
+    </div>
+    <div class="form-group">
+      <label class="control-label">Password</label>
+      <input type="password" class="form-control" required data-error="This field is required">
+      <div class="help-block with-errors"></div>
+    </div>
+    <div class="form-group">
+      <label class="control-label">Url</label>
+      <input type="url" class="form-control" required data-error="That url is invalid">
+      <div class="help-block with-errors"></div>
+    </div>
+    <div class="form-group">
+      <label class="control-label">Number</label>
+      <input type="text" class="form-control" required data-error="Numeric values from 0-***">
+      <div class="help-block with-errors"></div>
+    </div>
+    <div class="form-group">
+      <label class="control-label normal">Date</label>
+      <input type="date" class="form-control" required data-error="That date is invalid">
+      <div class="help-block with-errors"></div>
+    </div>
+    <div class="form-group">
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" required> Are you a winner? </label>
+      </div>
+    </div>
+    <div class="form-group filled">
+      <label class="control-label">Select</label>
+      <select class="form-control" required data-error="This field is required">
+        <option value=""></option>
+        <option value="Select a pirate">Select a pirate</option>
+        <option value="Monkey D. Luffy">Monkey D. Luffy</option>
+        <option value="Roronoa Zoro">Roronoa Zoro</option>
+        <option value="Tony Tony Chopper">Tony Tony Chopper</option>
+        <option value="Nico Robin">Nico Robin</option>
+        <option value="Bon Clay">Bon Clay</option>
+      </select>
+      <div class="help-block with-errors"></div>
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="reset" class="btn btn-default">Reset</button>
+    </div>
+  </fieldset>
+</form>

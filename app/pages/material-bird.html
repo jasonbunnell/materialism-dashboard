@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="materialism">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Materialism</title>
+
+  <link rel="manifest" href="../assets/img/favicon/manifest.json">
+  <link rel="shortcut icon" href="../assets/img/favicon/favicon.ico">
+
+  <!-- reusebuild:css ../assets/css/styles.min.css -->
+  <link href="../assets/css/materialism.css" rel="stylesheet" />
+  <link href="../assets/css/helpers.css" rel="stylesheet" />
+  <!-- endreusebuild -->
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+  <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body class="page-error">
+<div class="center">
+  <div class="card bordered z-depth-2"  style="margin:0% auto; width: 840px;">
+    <div class="card-content">
+      <div id="gameDiv"></div>
+    </div>
+    <div class="card-action clearfix">
+      <div class="text-center">
+        <a href="javascript:window.close();" class="btn btn-primary btn-block">Back to the homepage</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script src="//cdn.jsdelivr.net/phaser/2.3.0/phaser.min.js"></script>
+<script>
+
+  var SPEED = 200;
+  var GRAVITY = 1500;
+  var JET = 420;
+  var OPENING = 200;
+  var SPAWN_RATE = 1.25;
+
+  var state = {
+    preload: function() {
+      this.load.spritesheet("player",'../assets/img/favicon/android-chrome-48x48.png', 48, 48);
+      this.load.image("wall", "wall.png");
+      this.load.image("background", "bg.jpg");
+    },
+    create: function(){
+      this.background = this.add.tileSprite(0,0,this.world.width, this.world.height, "background");
+
+      this.walls = this.add.group();
+
+      this.physics.startSystem(Phaser.Physics.ARCADE);
+      this.physics.arcade.gravity.y = GRAVITY;
+
+      this.player = this.add.sprite(0,0,'player');
+      this.player.animations.add("fly", [0,1,2], 10, true);
+      this.physics.arcade.enableBody(this.player);
+      this.player.body.collideWorldBounds = true;
+
+      this.scoreText = this.add.text(
+        this.world.centerX,
+        this.world.height/5,
+        "",
+        {
+          size: "32px",
+          fill: "#FFF",
+          align: "center"
+        }
+      );
+      this.scoreText.setShadow(2, 2, 'rgba(0,0,0,0.5)', 2);
+      this.scoreText.anchor.setTo(0.5, 0.5);
+      this.input.onDown.add(this.jet, this);
+
+      var spaceKey = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+      spaceKey.onDown.add(this.jet, this);
+
+      this.reset();
+    },
+    update: function(){
+      if(this.gameStarted){
+
+        if(this.player.body.velocity.y > -20){
+          this.player.frame = 3;
+        }else{
+          this.player.animations.play("fly");
+        }
+
+        this.walls.forEachAlive(function(wall){
+          if(wall.x + wall.width < game.world.bounds.left){
+            wall.kill();
+          }else if(!wall.scored && wall.x <= state.player.x){
+            state.addScore(wall);
+          }
+        })
+        if(!this.gameOver){
+
+          if (this.player.angle < 20) this.player.angle += 1;
+
+          if(this.player.body.bottom >= this.world.bounds.bottom){
+            this.setGameOver();
+          }
+          this.physics.arcade.collide(this.player, this.walls, this.setGameOver, null, this);
+        }
+      }else{
+        this.player.y = this.world.centerY + (8 * Math.cos(this.time.now/200));
+      }
+    },
+    reset: function(){
+
+      this.background.autoScroll(-SPEED *.80,0);
+
+      this.gameStarted = false;
+      this.gameOver = false;
+      this.score = 0;
+
+      this.player.body.allowGravity = false;
+      this.player.reset(this.world.width/3, this.world.centerY);
+      this.player.animations.play("fly");
+
+      this.scoreText.setText("TOUCH OR SPACEBAR TO\nSTART GAME");
+
+      this.walls.removeAll();
+    },
+    start: function(){
+      this.player.body.allowGravity = true;
+      this.scoreText.setText("SCORE\n"+this.score);
+      this.gameStarted = true;
+
+      this.wallTimer = this.game.time.events.loop(Phaser.Timer.SECOND * SPAWN_RATE, this.spawnWalls, this );
+      this.wallTimer.timer.start();
+    },
+    jet: function(){
+      if(!this.gameStarted) this.start();
+
+      if(!this.gameOver) {
+        this.player.body.velocity.y = -JET;
+
+        game.add.tween(this.player).to({angle: -15}, 100).start();
+
+      } else if(this.time.now > this.timeOver + 400){
+        this.reset();
+      }
+    },
+    setGameOver: function(){
+      this.gameOver = true;
+      this.scoreText.setText("FINAL SCORE\n"+this.score+"\n\nTOUCH OR SPACEBAR \n TO TRY AGAIN");
+      this.timeOver = this.time.now;
+
+      this.player.angle = 0;;
+
+      this.walls.forEachAlive(function(wall){
+        wall.body.velocity.x = wall.body.velocity.y = 0;
+
+      })
+
+      this.wallTimer.timer.stop();
+      this.background.autoScroll(0,0);
+      this.player.body.velocity.x = 0;
+    },
+
+    spawnWall: function(y, flipped){
+      var wall = this.walls.create(
+        game.width,
+        y + (flipped ? -OPENING : OPENING) / 2,
+        "wall"
+      );
+
+      this.physics.arcade.enableBody(wall);
+      wall.body.allowGravity = false;
+      wall.scored = false;
+      wall.body.immovable = true;
+      wall.body.velocity.x = -SPEED;
+      if(flipped){
+        wall.scale.y = -1;
+        wall.body.offset.y  = -wall.body.height;
+      }
+
+      return wall;
+    },
+    spawnWalls: function(){
+      var wallY = this.rnd.integerInRange(game.height *.3, game.height *.7);
+      var botWall = this.spawnWall(wallY);
+      var topWall = this.spawnWall(wallY, true);
+    },
+    addScore: function(wall){
+      wall.scored = true;
+      this.score += .5;
+      this.scoreText.setText("SCORE\n"+this.score);
+    }
+  };
+
+  var game = new Phaser.Game(
+    800,
+    568,
+    Phaser.CANVAS,
+    document.querySelector('#gameDiv'),
+    state
+  );
+
+</script>
+
+
+</body>
+</html>

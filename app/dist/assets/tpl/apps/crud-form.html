@@ -1,0 +1,37 @@
+<div class="aside bs-docs-aside" tabindex="-1" role="dialog">
+  <div class="close">
+    <div class="btn btn-round btn-info" ng-click="$hide()"><i class="md md-close"></i></div>
+  </div>
+
+  <div class="aside-dialog">
+    <div class="aside-body bs-sidebar">
+
+      <form class="form-floating" novalidate="novalidate" ng-submit="saveItem(item)">
+        <fieldset>
+          <legend><span ng-bind-html="item.icon"></span> {{cmd}} {{settings.singular}}</legend>
+
+          <div class="form-group filled">
+            <label class="control-label">Firstname</label>
+            <input type="text" class="form-control" ng-model="item.firstname" ng-disabled="!item.editing" required>
+          </div>
+
+          <div class="form-group filled">
+            <label class="control-label">Lastname</label>
+            <input type="text" class="form-control" ng-model="item.lastname" ng-disabled="!item.editing">
+          </div>
+
+          <div class="form-group filled">
+            <label class="control-label">Summary</label>
+            <textarea class="form-control vertical" rows="3" ng-model="item.paragraph" ng-disabled="!item.editing"></textarea>
+          </div>
+
+          <div class="form-group">
+            <button type="submit" class="btn btn-lg btn-primary" ng-hide="!item.editing">Save</button>
+          </div>
+
+        </fieldset>
+      </form>
+
+    </div>
+  </div>
+</div>

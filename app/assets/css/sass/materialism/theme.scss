@@ -1,0 +1,33 @@
+@mixin theme-colors($color-value, $primary: true, $color-type: "") {
+  $prefix: if($primary, "theme", "theme-secondary");
+  $suffix: if($color-type == "base", "", "-" + $color-type);
+
+  .#{$prefix}#{$suffix} {
+    background-color: $color-value;
+    color: auto-text-color($color-value);
+  }
+  .#{$prefix}-text#{$suffix} {
+    color: $color-value;
+  }
+  .#{$prefix}-bg#{$suffix} {
+    background-color: $color-value;
+  }
+  .#{$prefix}-border#{$suffix} {
+    border-color: $color-value;
+  }
+  .#{$prefix}-fill#{$suffix} {
+    fill: $color-value;
+  }
+  .#{$prefix}-box-inset#{$suffix} {
+    @include box-shadow(inset 0 -2px 0 $color-value);
+  }
+}
+
+//== Theme colors with variations
+@each $color-type, $color-value in map-get($colors, $theme-primary-name) {
+  @include theme-colors($color-value, true, $color-type);
+}
+
+@each $color-type, $color-value in map-get($colors, $theme-secondary-name) {
+  @include theme-colors($color-value, false, $color-type);
+}

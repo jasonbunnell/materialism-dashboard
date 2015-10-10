@@ -1,0 +1,41 @@
+<section class="tables-data" ng-controller="TablesDataController">
+
+  <div class="page-header">
+    <h1>
+      <i class="md md-list"></i>
+      Data tables
+    </h1>
+    <p class="lead">
+      ngTable allows you to interact with your tables.
+      It supports sorting, filtering and pagination. Header rows with titles and filters are automatically generated during compilation
+    </p>
+  </div>
+
+  <div class="card">
+
+    <div class="row">
+      <div class="col-md-6">
+        <h3 class="table-title p-20">{{data.length}} rows</h3>
+      </div>
+      <div class="col-md-6">
+        <div class="table-search">
+          <input type="text" ng-model="tableParams.filter()['search']" class="form-control" placeholder="Search data" autofocus />
+        </div>
+      </div>
+    </div>
+
+    <div class="table-responsive white">
+
+      <table ng-table="tableParams" template-pagination="assets/tpl/partials/data-table-pager.html"  class="table table-full table-full-small">
+        <tr ng-repeat="item in $data">
+          <td width="50" ng-bind-html="item.icon">{{item.icon}}</td>
+          <td data-title="'firstname'" filter="{ 'firstname': 'text' }" sortable="'firstname'">{{item.firstname}}</td>
+          <td data-title="'lastname'" sortable="'lastname'">{{item.lastname}}</td>
+        </tr>
+      </table>
+
+    </div>
+
+  </div>
+
+</section>

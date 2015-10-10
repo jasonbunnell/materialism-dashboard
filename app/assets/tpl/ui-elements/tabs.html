@@ -1,0 +1,79 @@
+<section class="tabs">
+  <div class="page-header">
+    <h1>Tabs &amp; Accordions</h1>
+    <p class="lead">
+      No comment ^^
+    </p>
+  </div>
+
+
+  <div class="row">
+
+    <div class="col-md-6">
+
+      <accordion>
+        <accordion-group heading="Static Header, initially expanded">
+          This content is straight in the template.
+        </accordion-group>
+        <accordion-group heading="{{group.title}}" ng-repeat="group in groups">
+          {{group.content}}
+        </accordion-group>
+        <accordion-group heading="Dynamic Body Content">
+          <p>The body of the accordion group grows to fit the contents</p>
+        </accordion-group>
+        <accordion-group is-open="status.open">
+          <accordion-heading>
+            I can have markup, too! <i class="pull-right md" ng-class="{'md-favorite': status.open, 'md-refresh': !status.open}"></i>
+          </accordion-heading>
+          This is just some content to illustrate fancy headings.
+        </accordion-group>
+      </accordion>
+
+    </div>
+
+    <div class="col-md-6">
+
+
+
+
+      <div class="card">
+        <tabset>
+          <tab heading="Static title">
+            <div class="card-content">Static content</div>
+          </tab>
+
+          <tab select="alertMe()">
+            <tab-heading>
+              <i class="md md-audiotrack"></i> Alert!
+            </tab-heading>
+            <div class="card-content">I've got an HTML heading, and a select callback. Pretty cool!</div>
+          </tab>
+        </tabset>
+      </div>
+
+      <hr />
+
+      <div class="card">
+        <tabset justified="true">
+          <tab heading="Static title">
+            <div class="card-content">Static content</div>
+          </tab>
+
+          <tab select="alertMe()">
+            <tab-heading>
+              <i class="md md-audiotrack"></i> Alert!
+            </tab-heading>
+            <div class="card-content">I've got an HTML heading, and a select callback. Pretty cool!</div>
+          </tab>
+        </tabset>
+      </div>
+
+
+    </div>
+
+  </div>
+
+
+
+
+</section>

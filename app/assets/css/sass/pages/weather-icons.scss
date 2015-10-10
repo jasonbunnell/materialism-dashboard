@@ -1,0 +1,30 @@
+.weather-icons {
+  .example {
+    text-align: center;
+    margin: 10px 0;
+    cursor: pointer;
+
+    @include transition(all 0.1s);
+    @include scale(1);
+
+    &:hover {
+      @include scale(1.05);
+    }
+
+    .icon {
+      float: left;
+      width: 55px;
+      i {
+        font-size: 38px;
+        color: #3A3A3A;
+      }
+    }
+    .class {
+      text-align: center;
+      font-size: 14px;
+      float: left;
+      margin-top: 6px;
+      margin-left: 10px;
+    }
+  }
+}

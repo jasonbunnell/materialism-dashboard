@@ -1,0 +1,101 @@
+$keyframe-name: 'grow';
+
+@mixin animate-grow($prefix: '') {
+  0% {
+    border-radius: 50%;
+    @include box-shadow(0, 0);
+    #{$prefix}transform: scale(0.1);
+  }
+
+  100% {
+    border-radius: 0;
+    @include box-shadow(0 1px 3px 0 rgba(0, 0, 0, 0.16), 0 1px 5px 0 rgba(0, 0, 0, 0.12)); // z-depth-1
+    #{$prefix}transform: scale(1);
+  }
+}
+
+@-webkit-keyframes #{$keyframe-name} {
+  @include animate-grow($prefix-webkit);
+}
+
+@-moz-keyframes #{$keyframe-name} {
+  @include animate-grow($prefix-moz);
+}
+
+@-o-keyframes #{$keyframe-name} {
+  @include animate-grow($prefix-opera);
+}
+
+@keyframes #{$keyframe-name} {
+  @include animate-grow();
+}
+
+
+$keyframe-name: 'shrink';
+
+@mixin animate-shrink($prefix: '') {
+  0% {
+    opacity: 1;
+    #{$prefix}transform: scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    #{$prefix}transform: scale(0);
+  }
+}
+
+@-webkit-keyframes #{$keyframe-name} {
+  @include animate-shrink($prefix-webkit);
+}
+
+@-moz-keyframes #{$keyframe-name} {
+  @include animate-shrink($prefix-moz);
+}
+
+@-o-keyframes #{$keyframe-name} {
+  @include animate-shrink($prefix-opera);
+}
+
+@keyframes #{$keyframe-name} {
+  @include animate-shrink();
+}
+
+.mat-grow-top-right {
+  @include transform-origin(top right);
+}
+
+.mat-grow-top-left {
+  @include transform-origin(top left);
+}
+
+.mat-grow-top-right,
+.mat-grow-top-left {
+  @include animation-duration(0.8s);
+  @include animation-timing-function(cubic-bezier(0.23, 1, 0.32, 1));
+  @include animation-fill-mode(backwards);
+
+  &.mat-grow-top-right-add, &.mat-grow-top-left-add, &.ng-hide-remove, &.ng-move {
+    @include animation(grow 0.8s cubic-bezier(0.23, 1, 0.32, 1));
+  }
+  &.mat-grow-top-right-remove, &.mat-grow-top-left-remove, &.ng-hide {
+    @include animation(shrink 0.3s);
+  }
+
+  &.ng-enter {
+    visibility: hidden;
+    @include animation(grow 0.8s cubic-bezier(0.23, 1, 0.32, 1));
+    animation-play-state: paused;
+    &.ng-enter-active {
+      visibility: visible;
+      animation-play-state: running;
+    }
+  }
+  &.ng-leave {
+    @include animation(shrink 0.3s);
+    animation-play-state: paused;
+    &.ng-leave-active {
+      animation-play-state: running;
+    }
+  }
+}

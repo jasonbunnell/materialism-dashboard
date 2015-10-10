@@ -1,0 +1,12 @@
+.card .card-header,
+.panel-heading {
+    position: relative;
+}
+
+.dashboard .actions {
+    position: relative;
+}
+
+.panel-heading .pull-right {
+    position: relative;
+}

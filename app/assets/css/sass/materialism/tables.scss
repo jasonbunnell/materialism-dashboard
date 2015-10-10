@@ -1,0 +1,168 @@
+
+.table-small {
+  margin-bottom: 10px;
+
+  tbody > tr > td {
+    vertical-align: middle;
+    padding:2px;
+    border-top: 1px solid #F9F9F9;
+
+    i {
+      font-size:25px;
+      line-height:25px;
+    }
+
+    &:first-child {
+      padding-left: 20px;
+    }
+    &:last-child {
+      padding-right:20px;
+    }
+  }
+}
+
+.table-full {
+  margin-bottom:0px;
+  background:#fff;
+  width:100%;
+
+  thead {
+    background: #FAFAFA;
+    tr > th {
+      vertical-align: bottom;
+      border-bottom: 1px solid #F0F0F0;
+      text-transform: uppercase;
+      font-weight: 500;
+      font-size:11px;
+
+      &:first-child {
+        padding-left: 40px;
+      }
+      &:last-child {
+        padding-right:20px;
+      }
+
+      input[type="checkbox"] {
+        width: 16px;
+        height: 16px;
+        margin: 0px;
+
+        &:after {
+          width: 19px;
+          height: 19px;
+          margin-top: 1px;
+          margin-left: 3px;
+        }
+      }
+    }
+  }
+
+  tbody > tr > td {
+    vertical-align: middle;
+    cursor: pointer;
+
+    &:first-child {
+      padding-left: 40px;
+    }
+    &:last-child {
+      padding-right:20px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+  }
+
+  input[type="checkbox"] {
+    margin: 7px 0 0;
+
+    &:after {
+      border-color: #DBDBDB;
+    }
+    &:checked:after {
+      @extend .theme-border;
+    }
+  }
+
+  .btn-round {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+    line-height: 40px;
+  }
+
+  tr:hover .icon-color {
+    @include scale(1.05);
+    border-radius: 10px;
+  }
+
+  &-small {
+    thead {
+      tr > th:first-child {
+        padding-left: 20px;
+      }
+    }
+    tbody > tr > td:first-child {
+      padding-left: 20px;
+    }
+  }
+}
+
+.table-title {
+  border-bottom: 1px solid rgba(160, 160, 160, 0.15);
+  padding: 20px 20px 20px 40px;
+  font-size: 24px;
+  font-weight: 300;
+  margin:0px;
+  color: #9B9B9B;
+
+  &.normal {
+    padding: 20px;
+  }
+
+}
+
+.footer-buttons {
+  position:fixed;
+  bottom:20px;
+  right:20px;
+
+  .btn-footer {
+    @include animation(moveFromBottomFade .3s ease both);
+    position:relative !important;
+    display:inline-block !important;
+
+    &.ng-hide {
+      @include animation(moveToBottomFade .3s ease both);
+    }
+  }
+}
+
+
+
+@-webkit-keyframes moveFromBottomFade {
+  from {
+    opacity: 0;
+    @include translate(0, 100%);
+  }
+}
+@keyframes moveFromBottomFade {
+  from {
+    opacity: 0;
+    @include translate(0, 100%);
+  }
+}
+
+@-webkit-keyframes moveToBottomFade {
+  from { }
+  to {
+    opacity: 0;
+    @include translate(0, 100%);
+  }
+}
+@keyframes moveToBottomFade {
+  from { }
+  to {
+    opacity: 0;
+    @include translate(0, 100%);
+  }
+}
